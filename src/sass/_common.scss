@@ -1,1 +1,18 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+
+.container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid red;
+    min-width: 320px;
+    max-width: 480px;
+
+    @media screen and (min-width: 768px) {
+        max-width: 768px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      max-width: 1280px;
+    }
+}
