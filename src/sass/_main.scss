@@ -2,14 +2,9 @@
     color: blue;
 }
 
-.list {
-    list-style: none;
-}
-
-.link {
-    display: block;
-    text-decoration: none;
-}
+// .section {
+//     padding: 0 20px;
+// }
 
 .film-list {
     display: flex;
@@ -28,8 +23,11 @@
 
 .film-list__item {
     width: 100%;
+    height: 100%;
     margin-right: auto;
     margin-left: auto;
+    border-radius: 5px;
+    overflow: hidden;
     
     @media screen and (min-width: 768px) {
         width: calc((100% - 32px) / 2);
@@ -60,45 +58,63 @@
     // }
 }
 
+.film-list__top-wrap {
+    width: 280px;
+    height: auto;
+}
+
+
 .film-data {
-    padding: 20px 24px;
+    height: 32px;
+    padding-top: 10px;
     border: 1px solid #EEEEEE;
     border-top: none;
-    @media screen and (min-width: 481px) and (max-width: 767px){
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-        justify-content: flex-start;
-    }
+    
+    
+    // @media screen and (min-width: 481px) and (max-width: 767px){
+    //     display: flex;
+    //     flex-direction: column;
+    //     flex-grow: 1;
+    //     justify-content: flex-start;
+    // }
 
-    @media screen and (min-width: 768px) and (max-width: 1199px) {
-        flex-grow: 1;
-    }
+    // @media screen and (min-width: 768px) and (max-width: 1199px) {
+    //     flex-grow: 1;
+    // }
 }
 
 .film-data__title {
     margin-bottom: 4px;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 2;
-    letter-spacing: 0.06em;
-    color: var(--first-text-color);
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33px;
+    text-transform: uppercase;
+    color: #000000;
 }
 
 .film-data__genres {
-    font-size: 16px;
-    line-height: 1.8;
-    letter-spacing: 0.03em;
-    color: var(--second-text-color);
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33px;
+    color: #FF6B08;
 }
 
-// .film-data__year {
+.film-data__year {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33px;
+    color: #FF6B08;
+}
 
+// .film-data__year::before {
+//     height: 22px; 
+//     padding-right: 10px;
+//     padding-left: 10px;
+//     border-right: 1px solid rgba(33, 33, 33, 0.2); 
 // }
-
-.film-data__year::before {
-    height: 22px; 
-    // // padding-right: 10px;
-    // padding-left: 10px;
-    border-right: 1px solid rgba(33, 33, 33, 0.2); 
-}
