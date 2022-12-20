@@ -5,3 +5,4 @@ import { movieLink } from './js/linkapi';
 movieLink.getMovies(1).then (res => console.log(res));
 movieLink.getMoviesByWord('Аватар').then (res => console.log(res));
 movieLink.getMoviesById(19995).then (res => console.log(res));
+console.log(movieLink.getImageUrl('198vrF8k7mfQ4FjDJsBmdQcaiyq.jpg', 500));

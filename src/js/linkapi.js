@@ -5,6 +5,8 @@ const keyApi = '0bf9a11da9d083f4751315d07dcbd89b';
 const baseUrl = 'https://api.themoviedb.org/3/trending/movie/day';
 const searchByWodrUrl = 'https://api.themoviedb.org/3/search/movie';
 const searchByIdUrl = 'https://api.themoviedb.org/3/movie/';
+const imgUrl = 'https://image.tmdb.org/t/p/w';
+
 const loading = Notiflix.Loading.circle('loading result...');
 const stopLoading = Notiflix.Loading.remove();
 
@@ -20,7 +22,8 @@ const stopLoading = Notiflix.Loading.remove();
 //Api get movie about by id
 // https://api.themoviedb.org/3/movie/19995?language=en-US&api_key=0bf9a11da9d083f4751315d07dcbd89b
 
-//Img link https://image.tmdb.org/t/p/w500/198vrF8k7mfQ4FjDJsBmdQcaiyq.jpg
+//Img link 
+// https://image.tmdb.org/t/p/w500/198vrF8k7mfQ4FjDJsBmdQcaiyq.jpg
 
 export const movieLink = {
      
@@ -86,6 +89,11 @@ export const movieLink = {
             Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`);
         };
     },
+  
+    //Objec method to img full path
+    getImageUrl (imgName, imgSize) {
+        return `${imgUrl}${imgSize}/${imgName}`;
+    }
 
 }
 
