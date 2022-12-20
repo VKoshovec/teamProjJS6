@@ -6,7 +6,7 @@ const baseUrl = 'https://api.themoviedb.org/3/trending/movie/day';
 const searchByWodrUrl = 'https://api.themoviedb.org/3/search/movie';
 const searchByIdUrl = 'https://api.themoviedb.org/3/movie/';
 
-// Api test reqvest
+// Api test request
 // https://api.themoviedb.org/3/movie/550?api_key=0bf9a11da9d083f4751315d07dcbd89b
 
 //Api popular movie in a day
@@ -31,7 +31,10 @@ export const movieLink = {
         };
 
         try {
-           return await axios.get ( baseUrl, { params } );
+           const request = await axios.get ( baseUrl, { params } );
+           const result = request.data.results;
+           return result;
+
         } catch (error) {
            Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`) 
         };
