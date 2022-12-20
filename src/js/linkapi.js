@@ -18,6 +18,8 @@ const searchByIdUrl = 'https://api.themoviedb.org/3/movie/';
 //Api get movie about by id
 // https://api.themoviedb.org/3/movie/19995?language=en-US&api_key=0bf9a11da9d083f4751315d07dcbd89b
 
+//Img link https://image.tmdb.org/t/p/w500/198vrF8k7mfQ4FjDJsBmdQcaiyq.jpg
+
 export const movieLink = {
      
     //Objec method to get movies by page number
@@ -46,9 +48,7 @@ export const movieLink = {
         };
 
         try {
-
            return await axios.get ( searchByWodrUrl, { params } );
-
         } catch (error) {
            Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`) 
         };
@@ -63,9 +63,7 @@ export const movieLink = {
         };
 
         try {
-
            return await axios.get ( `${searchByIdUrl}${movieId}`, { params } );
-
         } catch (error) {
             Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`);
         };
