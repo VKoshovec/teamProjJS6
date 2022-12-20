@@ -5,6 +5,8 @@ const keyApi = '0bf9a11da9d083f4751315d07dcbd89b';
 const baseUrl = 'https://api.themoviedb.org/3/trending/movie/day';
 const searchByWodrUrl = 'https://api.themoviedb.org/3/search/movie';
 const searchByIdUrl = 'https://api.themoviedb.org/3/movie/';
+const loading = Notiflix.Loading.circle('loading result...');
+const stopLoading = Notiflix.Loading.remove();
 
 // Api test request
 // https://api.themoviedb.org/3/movie/550?api_key=0bf9a11da9d083f4751315d07dcbd89b
@@ -30,11 +32,14 @@ export const movieLink = {
             page: pageNumber,
         };
 
-        try {
-           const request = await axios.get ( baseUrl, { params } );
-           const result = request.data.results;
-           return result;
+        loading;
 
+        try {
+
+           const request = await axios.get ( baseUrl, { params } );
+           stopLoading;
+           return request.data.results;
+    
         } catch (error) {
            Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`) 
         };
@@ -50,8 +55,14 @@ export const movieLink = {
             include_adult: false,
         };
 
+        loading;
+
         try {
-           return await axios.get ( searchByWodrUrl, { params } );
+
+           const request = await axios.get ( searchByWodrUrl, { params } );
+           stopLoading;
+           return request.data.results;
+
         } catch (error) {
            Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`) 
         };
@@ -65,8 +76,12 @@ export const movieLink = {
             api_key: keyApi,
         };
 
+        loading;
+
         try {
-           return await axios.get ( `${searchByIdUrl}${movieId}`, { params } );
+            const request = await axios.get ( `${searchByIdUrl}${movieId}`, { params } );
+            stopLoading;
+            return request.data;
         } catch (error) {
             Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`);
         };
