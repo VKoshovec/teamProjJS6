@@ -1,4 +1,6 @@
 import axios from "axios";
+import Notiflix from "notiflix";
+
 const keyApi = '0bf9a11da9d083f4751315d07dcbd89b';
 const baseUrl = 'https://api.themoviedb.org/3/trending/movie/day';
 
@@ -8,11 +10,22 @@ const baseUrl = 'https://api.themoviedb.org/3/trending/movie/day';
 //Api popular movie in a day
 // https://api.themoviedb.org/3/trending/movie/day?api_key=0bf9a11da9d083f4751315d07dcbd89b
 
-const params = {
-    api_key: keyApi,
-    page: 2
+export const movieLink = {
+     
+    //Objec method to get movies by page number
+    async getMovies ( pageNumber ) {
+            
+        const params = {
+            api_key: keyApi,
+            page: pageNumber,
+        };
+
+        try {
+           return  await axios.get ( baseUrl, { params } );
+        } catch (error) {
+           Notiflix.Notify.failure('Some broblems with api or query!') 
+        };
+    },
+
 }
 
-axios.get ( baseUrl, { params } ).then(
-     res => console.log(res)
-);
