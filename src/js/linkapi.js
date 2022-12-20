@@ -31,7 +31,7 @@ export const movieLink = {
         try {
            return await axios.get ( baseUrl, { params } );
         } catch (error) {
-           Notiflix.Notify.failure('Some broblems with api or query!') 
+           Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`) 
         };
     },
 
@@ -48,9 +48,9 @@ export const movieLink = {
         try {
 
            return await axios.get ( searchByWodrUrl, { params } );
-           
+
         } catch (error) {
-           Notiflix.Notify.warning('There are no results!') 
+           Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`) 
         };
     },
 
@@ -67,7 +67,7 @@ export const movieLink = {
            return await axios.get ( `${searchByIdUrl}${movieId}`, { params } );
 
         } catch (error) {
-            Notiflix.Notify.failure('Some broblems with api or query!');
+            Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`);
         };
     },
 
