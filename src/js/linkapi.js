@@ -41,7 +41,7 @@ export const movieLink = {
 
            const request = await axios.get ( baseUrl, { params } );
            stopLoading;
-           return request.data.results;
+           return await request.data.results;
     
         } catch (error) {
            Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`) 
@@ -64,7 +64,7 @@ export const movieLink = {
 
            const request = await axios.get ( searchByWodrUrl, { params } );
            stopLoading;
-           return request.data.results;
+           return await request.data.results;
 
         } catch (error) {
            Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`) 
@@ -84,7 +84,7 @@ export const movieLink = {
         try {
             const request = await axios.get ( `${searchByIdUrl}${movieId}`, { params } );
             stopLoading;
-            return request.data;
+            return await request.data;
         } catch (error) {
             Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`);
         };
