@@ -1,0 +1,60 @@
+:root {
+  --cubic: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(48, 48, 48, 0.599);
+  transition: opacity 300ms var(--cubic), visibility 300ms var(--cubic);
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.backdrop.is-hidden .main-modal {
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.main-modal {
+  width: 806px;
+  padding: 40px 12px;
+  min-height: 558px;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 300ms var(--cubic);
+}
+
+.btn-close-modal {
+  position: absolute;
+  right: 8;
+  top: 8;
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+  background-color: transparent;
+}
+
+.film {
+  display: flex;
+  gap: 16px; // justify-content: space-between;
+}
+
+.film__poster {
+  min-width: 375px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.film__content {
+  // flex-grow: 1;
+  // width: 300px;
+}
