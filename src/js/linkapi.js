@@ -6,6 +6,7 @@ const baseUrl = 'https://api.themoviedb.org/3/trending/movie/day';
 const searchByWodrUrl = 'https://api.themoviedb.org/3/search/movie';
 const searchByIdUrl = 'https://api.themoviedb.org/3/movie/';
 const imgUrl = 'https://image.tmdb.org/t/p/w';
+const genresUrl = 'https://api.themoviedb.org/3/genre/movie/list';
 
 const loading = Notiflix.Loading.circle('loading result...');
 const stopLoading = Notiflix.Loading.remove();
@@ -24,6 +25,9 @@ const stopLoading = Notiflix.Loading.remove();
 
 //Img link 
 // https://image.tmdb.org/t/p/w500/198vrF8k7mfQ4FjDJsBmdQcaiyq.jpg
+
+//Genres list 
+// https://api.themoviedb.org/3/genre/movie/list?api_key=0bf9a11da9d083f4751315d07dcbd89b&language=en-US
 
 export const movieLink = {
      
@@ -90,10 +94,29 @@ export const movieLink = {
         };
     },
   
+    //Objec method to get geres list
+    async getGenresList () {
+
+        const params = {
+            api_key: keyApi,
+            language: 'en-US',
+        };
+
+        loading;
+
+        try {
+            const request = await axios.get ( genresUrl, { params } );
+            stopLoading;
+            return await request.data.genres;
+        } catch (error) {
+            Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`);
+        };
+    },
+
     //Objec method to img full path
     getImageUrl (imgName, imgSize) {
         return `${imgUrl}${imgSize}/${imgName}`;
-    }
+    },
 
 }
 
