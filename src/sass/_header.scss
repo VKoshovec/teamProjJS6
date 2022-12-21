@@ -1,3 +1,9 @@
+html {
+    overflow-y: scroll;
+}
+
+
+
 .header {
     color:red;
     margin-left: auto;
@@ -18,7 +24,61 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
     url(../images/background-mob-2x.jpg)}
 
-    
 
+    @media screen and (min-width: $tablet) {
+        max-width: $tablet;
+    
+        background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+          url(../images/background-tab-1x.jpg);
+
+    @media screen and (max-width: ($desktop - 1)) and (min-device-pixel-ratio: 2),
+          screen and (max-width: ($desktop - 1)) and (min-resolution: 192dpi),
+          screen and (max-width: ($desktop - 1)) and (min-resolution: 2dppx) {
+          background-image: linear-gradient(
+              rgba(0, 0, 0, 0.56),
+              rgba(0, 0, 0, 0.56)
+            ),
+            url(../images/background-tab-2x.jpg);
+        }
+      }
+    
+      @media screen and (min-width: $desktop) {
+        max-width: $desktop;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+          url(../images/background-decs-1x.jpg);
+    
+        @media screen and (min-device-pixel-ratio: 2),
+          screen and (min-resolution: 192dpi),
+          screen and (min-resolution: 2dppx) {
+          background-image: linear-gradient(
+              rgba(0, 0, 0, 0.56),
+              rgba(0, 0, 0, 0.56)),
+            url(../images/background-decs-2x.jpg);
+        }
+      }
+
+
+}
+
+.search-form {
+    text-align: center;
+}
+
+.search-field {
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.14;
+    color: $white;
+    font-family: $mainFont;
+
+    background-color: transparent;
+    border: transparent;
+    border-bottom: 1px solid $white;
+
+    @media screen and (min-width: $tablet) {
+        width: 336px;
+      }
+    
+     
 
 }
