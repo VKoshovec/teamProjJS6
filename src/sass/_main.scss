@@ -2,14 +2,15 @@
     color: blue;
 }
 
-// .section {
-//     padding: 0 20px;
-// }
+.section {
+    padding-top: 20px;
+    // padding: 0 20px;
+}
 
 .film-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    // gap: 20px;
 
     @media screen and (min-width: 768px) {
         gap: 32px;
@@ -26,6 +27,8 @@
     height: 100%;
     margin-right: auto;
     margin-left: auto;
+    padding-right: 20px;
+    padding-left: 20px;
     border-radius: 5px;
     overflow: hidden;
     
@@ -59,14 +62,21 @@
 }
 
 .film-list__top-wrap {
-    width: 280px;
-    height: auto;
+    // padding-right: 20px;
+    // padding-left: 20px;
+    // width: 280px;
+    // height: 440px;
+    width: 100%;
+    height: 100%;
+    margin-right: 0px;
 }
 
 
 .film-data {
+    display: block;
     height: 32px;
     padding-top: 10px;
+   
     border: 1px solid #EEEEEE;
     border-top: none;
     
@@ -84,7 +94,8 @@
 }
 
 .film-data__title {
-    margin-bottom: 4px;
+    display: block;
+    margin-bottom: 10px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
@@ -94,7 +105,16 @@
     color: #000000;
 }
 
+.film-data__info {
+    display: flex;
+    justify-content:start;
+    height: 10px;
+    
+}
+
 .film-data__genres {
+    display: block;
+    padding-right: 5px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
@@ -104,17 +124,21 @@
 }
 
 .film-data__year {
+    display: block;
+    height: 10px;
+    padding-left: 5px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
     line-height: 1.33px;
     color: #FF6B08;
+    border-left: 1px solid #FF6B08; 
 }
 
 // .film-data__year::before {
 //     height: 22px; 
-//     padding-right: 10px;
-//     padding-left: 10px;
-//     border-right: 1px solid rgba(33, 33, 33, 0.2); 
+//     // padding-right: 10px;
+//     // padding-left: 10px;
+//     border-left: 1px solid #FF6B08; 
 // }
