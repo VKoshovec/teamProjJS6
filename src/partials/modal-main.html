@@ -13,7 +13,28 @@
       <div class="film__content">
         <h2 class="film__title">A FISTFUL OF LEAD</h2>
 
-        <ul class="film__list-info list">
+        <div class="list-wrapper">
+          <ul class="film-list__left">
+            <li class="item-left">
+              <span>Vote / Votes</span>
+            </li>
+            <li class="item-left"><span>Popularity</span></li>
+            <li class="item-left">
+              <span>Original Title </span>
+            </li>
+            <li class="item-left"><span>Genre Western</span></li>
+          </ul>
+          <ul class="film-list__right">
+            <li class="item-right item-right--vote">
+              <span class="film-vote">7.3 </span>/<span>1200</span>
+            </li>
+            <li class="item-right item-right--popularity">
+              <span>100.2</span>
+            </li>
+            <li class="item-right"><span>A FISTFUL OF LEAD</span></li>
+            <li class="item-right"><span>Western</span></li>
+          </ul>
+          <!-- <ul class="film__list-info list">
           <li class="film__item-info">
             <span class="left-item">Vote / Votes</span>
             <div class="rating">
@@ -34,7 +55,8 @@
             <span class="left-item">Genre</span>
             <span class="right-item">Western</span>
           </li>
-        </ul>
+        </ul> -->
+        </div>
 
         <p class="film__about">About</p>
         <p class="film__about-description">
@@ -47,8 +69,12 @@
           as they realise the bags of gold are filled with lead... they’ve been
           double crossed – but by who and how?
         </p>
-        <button class="btn film-btn__watched">add to Watched</button>
-        <button class="btn film-btn__queue">add to queue</button>
+        <div class="button-wrapper">
+          <button class="btn-modal film-btn__watched active">
+            add to Watched
+          </button>
+          <button class="btn-modal film-btn__queue">add to queue</button>
+        </div>
       </div>
     </div>
   </div>
