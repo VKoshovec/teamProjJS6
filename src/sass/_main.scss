@@ -51,17 +51,13 @@
     }
 }
 
-.film-list:last-child {
+.film-list__item:last-child {
     @media screen and (max-width: 767px) {
         margin-bottom: 0px;
     }
 }
 
 .film-list__top-wrap {
-    // padding-right: 20px;
-    // padding-left: 20px;
-    // width: 280px;
-    // height: 440px;
     max-width: 100%;
     height: auto;
     margin: 0;
@@ -85,11 +81,17 @@
 .film-data {
     display: block;
     height: 32px;
-    padding-top: 10px;
+    // padding-top: 10px;
     border: 1px solid #EEEEEE;
     border-top: none;
     justify-content: flex-start;
     
+    @media screen and (min-width: 1280px) {
+        // height: 48px; 
+        // padding-top: 12px;
+        margin-top: 12px;
+    }
+
     // @media screen and (min-width: 481px) and (max-width: 767px){
     //     display: flex;
     //     flex-direction: column;
@@ -104,7 +106,7 @@
 
 .film-data__title {
     display: block;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
@@ -112,6 +114,11 @@
     line-height: 1.33px;
     text-transform: uppercase;
     color: #000000;
+
+    @media screen and (min-width: 1280px) {
+        font-size: 20px;
+        line-height: 1.2px;
+    }
 }
 
 .film-data__info {
@@ -140,6 +147,11 @@
     font-size: 12px;
     line-height: 1.33px;
     color: #FF6B08;
+
+    @media screen and (min-width: 1280px) {
+        font-size: 20px;
+        line-height: 1.2px;
+    }
 }
 
 .film-data__year {
@@ -153,4 +165,10 @@
     line-height: 1.33px;
     color: #FF6B08;
     border-left: 1px solid #FF6B08; 
+
+    @media screen and (min-width: 1280px) {
+        height: 20px;
+        font-size: 20px;
+        line-height: 1.2px;
+    }
 }
