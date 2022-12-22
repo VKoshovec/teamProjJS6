@@ -1,5 +1,5 @@
-import axios from "axios";
-import Notiflix from "notiflix";
+import axios from 'axios';
+import Notiflix from 'notiflix';
 
 const keyApi = '0bf9a11da9d083f4751315d07dcbd89b';
 const baseUrl = 'https://api.themoviedb.org/3/trending/movie/day';
@@ -23,100 +23,89 @@ const stopLoading = Notiflix.Loading.remove();
 //Api get movie about by id
 // https://api.themoviedb.org/3/movie/19995?language=en-US&api_key=0bf9a11da9d083f4751315d07dcbd89b
 
-//Img link 
+//Img link
 // https://image.tmdb.org/t/p/w500/198vrF8k7mfQ4FjDJsBmdQcaiyq.jpg
 
-//Genres list 
+//Genres list
 // https://api.themoviedb.org/3/genre/movie/list?api_key=0bf9a11da9d083f4751315d07dcbd89b&language=en-US
 
 export const movieLink = {
-     
-    //Objec method to get movies by page number
-    async getMovies ( pageNumber ) {
-            
-        const params = {
-            api_key: keyApi,
-            page: pageNumber,
-        };
+  //Objec method to get movies by page number
+  async getMovies(pageNumber) {
+    const params = {
+      api_key: keyApi,
+      page: pageNumber,
+    };
 
-        loading;
+    loading;
 
-        try {
+    try {
+      const request = await axios.get(baseUrl, { params });
+      stopLoading;
+      return await request.data.results;
+    } catch (error) {
+      Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`);
+    }
+  },
 
-           const request = await axios.get ( baseUrl, { params } );
-           stopLoading;
-           return await request.data.results;
-    
-        } catch (error) {
-           Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`) 
-        };
-    },
+  //Objec method to get movies by name
+  async getMoviesByWord(queryWord) {
+    const params = {
+      api_key: keyApi,
+      language: 'en-US',
+      query: queryWord,
+      include_adult: false,
+    };
 
-    //Objec method to get movies by name
-    async getMoviesByWord ( queryWord ) {
-            
-        const params = {
-            api_key: keyApi,
-            language: 'en-US',
-            query: queryWord,
-            include_adult: false,
-        };
+    loading;
 
-        loading;
+    try {
+      const request = await axios.get(searchByWodrUrl, { params });
+      stopLoading;
+      return await request.data.results;
+    } catch (error) {
+      Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`);
+    }
+  },
 
-        try {
+  //Objec method to get movie about by id
+  async getMoviesById(movieId) {
+    const params = {
+      language: 'en-US',
+      api_key: keyApi,
+    };
 
-           const request = await axios.get ( searchByWodrUrl, { params } );
-           stopLoading;
-           return await request.data.results;
+    loading;
 
-        } catch (error) {
-           Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`) 
-        };
-    },
+    try {
+      const request = await axios.get(`${searchByIdUrl}${movieId}`, { params });
+      stopLoading;
+      return await request.data;
+    } catch (error) {
+      Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`);
+    }
+  },
 
-    //Objec method to get movie about by id
-    async getMoviesById ( movieId ) {
-            
-        const params = {
-            language: 'en-US',
-            api_key: keyApi,
-        };
+  //Objec method to get geres list
+  async getGenresList() {
+    const params = {
+      api_key: keyApi,
+      language: 'en-US',
+    };
 
-        loading;
+    loading;
 
-        try {
-            const request = await axios.get ( `${searchByIdUrl}${movieId}`, { params } );
-            stopLoading;
-            return await request.data;
-        } catch (error) {
-            Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`);
-        };
-    },
-  
-    //Objec method to get geres list
-    async getGenresList () {
+    try {
+      const request = await axios.get(genresUrl, { params });
+      stopLoading;
+      return await request.data.genres;
+    } catch (error) {
+      Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`);
+    }
+  },
 
-        const params = {
-            api_key: keyApi,
-            language: 'en-US',
-        };
-
-        loading;
-
-        try {
-            const request = await axios.get ( genresUrl, { params } );
-            stopLoading;
-            return await request.data.genres;
-        } catch (error) {
-            Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`);
-        };
-    },
-
-    //Objec method to img full path
-    getImageUrl (imgName, imgSize) {
-        return `${imgUrl}${imgSize}/${imgName}`;
-    },
-
-}
-
+  //Objec method to img full path
+  getImageUrl(imgName, imgSize) {
+    return `${imgUrl}${imgSize}/${imgName}`;
+  },
+};
