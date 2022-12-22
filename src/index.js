@@ -4,7 +4,7 @@ import { movieLink } from './js/linkapi';
 import './js/modal/modal-main';
 import { firebaseOptions } from './js/firebase-options';
 import { renderFilms } from './js/renderFilms';
-import { trendMmovies } from './js/requests';
+import { trendMovies } from './js/requests';
 import { localeStorage } from './js/localeStorage';
 
 //getting popular film list
@@ -23,4 +23,4 @@ import { localeStorage } from './js/localeStorage';
 // movieLink.getGenresList().then(res => console.log(res));
 
 // renderFilms(1);
-trendMmovies(1);
+trendMovies(1);

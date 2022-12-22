@@ -1,4 +1,4 @@
-import { trendMmovies } from './requests';
+import { trendMovies } from './requests';
 import { refs } from './refs';
 
 // movieLink.getMovies(1).then(res => pagination(res.data, "trending"));
@@ -58,7 +58,7 @@ export function pagination(currentPage, totalPage, qwery) {
   function switchQwery(qwery, numPage) {
     switch (qwery) {
       case 'trending':
-        trendMmovies(numPage);
+        trendMovies(numPage);
         // movieLink
         // .getMovies(numPage)
         // .then(res => pagination(res.data, 'trending'));
