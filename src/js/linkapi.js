@@ -30,7 +30,7 @@ const stopLoading = Notiflix.Loading.remove();
 // https://api.themoviedb.org/3/genre/movie/list?api_key=0bf9a11da9d083f4751315d07dcbd89b&language=en-US
 
 export const movieLink = {
-     
+
     //Objec method to get movies by page number
     async getMovies ( pageNumber ) {
             
@@ -44,10 +44,12 @@ export const movieLink = {
         try {
 
            const request = await axios.get ( baseUrl, { params } );
+
            stopLoading;
            return await request.data.results;
     
         } catch (error) {
+           stopLoading;
            Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`) 
         };
     },
@@ -71,6 +73,7 @@ export const movieLink = {
            return await request.data.results;
 
         } catch (error) {
+            stopLoading;
            Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`) 
         };
     },
@@ -90,6 +93,7 @@ export const movieLink = {
             stopLoading;
             return await request.data;
         } catch (error) {
+            stopLoading;
             Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`);
         };
     },
@@ -109,6 +113,7 @@ export const movieLink = {
             stopLoading;
             return await request.data.genres;
         } catch (error) {
+            stopLoading;
             Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`);
         };
     },
