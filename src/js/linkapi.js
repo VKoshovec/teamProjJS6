@@ -46,8 +46,9 @@ export const movieLink = {
            const request = await axios.get ( baseUrl, { params } );
 
            stopLoading;
-           return await request.data.results;
-    
+        //    return await request.data.results;
+              return await request.data;
+
         } catch (error) {
            stopLoading;
            Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`) 
@@ -70,7 +71,8 @@ export const movieLink = {
 
            const request = await axios.get ( searchByWodrUrl, { params } );
            stopLoading;
-           return await request.data.results;
+        //   return await request.data.results;
+           return await request.data;
 
         } catch (error) {
             stopLoading;

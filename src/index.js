@@ -4,9 +4,10 @@ import { movieLink } from './js/linkapi';
 import './js/modal/modal-main';
 import { firebaseOptions } from './js/firebase-options';
 import { renderFilms } from './js/renderFilms';
+import { trendMmovies } from './js/requests';
 
 //getting popular film list
-movieLink.getMovies(1).then(res => console.log(res));
+// movieLink.getMovies(1).then(res => console.log(res));
 
 //getting film by key-word
 // movieLink.getMoviesByWord('Аватар').then(res => console.log(res));
@@ -20,4 +21,5 @@ movieLink.getMovies(1).then(res => console.log(res));
 // getting all genres list
 // movieLink.getGenresList().then(res => console.log(res));
 
-renderFilms(1);
+// renderFilms(1);
+trendMmovies(1);
