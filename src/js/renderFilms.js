@@ -9,7 +9,6 @@ const refs = {
 };
 
 const numberPage = 1;
-const genresList = [];
 
 refs.searchForm.addEventListener('submit', handelSubmit);
 
@@ -47,10 +46,21 @@ async function popularMovies(numberPage) {
   const responce = await movieLink.getMovies(numberPage);
   const genres = await movieLink.getGenresList();
 
+  // let gen = responce.map(film => {
+  //   console.log(film.genre_ids);
+  //   film.genre_ids.forEach(element => {
+  //     if (element === genres.map(genr => genr.id)) {
+  //       console.log('wfwerfer');
+  //     } else console.log(genres.map(genr => genr.id));
+  //   });
+  //   // return (genresList = genres.filter(genre => genre.id == film.genre_ids));
+  // });
+
+  // console.log(gen);
+  console.log(responce);
+
   let films = responce.map(element => getItemTemplate(element));
   renderFilms(films);
-
-  console.log(responce);
 }
 
 function renderFilms(films) {
