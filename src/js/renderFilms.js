@@ -30,15 +30,15 @@ const refs = {
 //   refs.searchForm.reset();
 // }
 
-export async function renderFilms(numberPage) {
+export async function renderFilms(responce, genres) {
 
   refs.filmList.innerHTML = "";
 
   let films = [];
-  const apiData = await movieLink.getMovies(numberPage);
-  const responce = await apiData.results;
+  // const apiData = await movieLink.getMovies(numberPage);
+  // const responce = await apiData.results;
 
-  const genres = await movieLink.getGenresList();
+  // const genres = await movieLink.getGenresList();
 
   // const genresList = genres.map(element => element);
 
