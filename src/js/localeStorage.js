@@ -7,6 +7,8 @@ const formDataQueue = [];
 const refs = {
   btnWatched: document.querySelector('.film-btn__watched'),
   btnQueue: document.querySelector('.film-btn__queue'),
+  libraryBtn: document.querySelector('.nav_library'),
+  filmList: document.querySelector('.film-list'),
 };
 
 const getWatchedList = () => {
@@ -17,6 +19,7 @@ const getWatchedList = () => {
 
   const savedData = localStorage.getItem(KEY_STORAGE_WATCHED);
   const parseData = JSON.parse(savedData);
+  return parseData;
 };
 
 const getQueueList = () => {
@@ -27,6 +30,7 @@ const getQueueList = () => {
 
   const savedData = localStorage.getItem(KEY_STORAGE_QUEUE);
   const parseData = JSON.parse(savedData);
+  return parseData;
 };
 
 const removeFromWatchedList = () => {
@@ -61,5 +65,15 @@ const addFilmInQueue = event => {
   localStorage.setItem(KEY_STORAGE_QUEUE, JSON.stringify(formDataQueue));
 };
 
+const renderLists = e => {
+  e.preventDefault();
+
+  refs.filmList.innerHTML = '';
+  const currentList = [...getWatchedList(), ...getQueueList()];
+
+  refs.filmList.insertAdjacentHTML('beforeend', currentList);
+};
+
+refs.libraryBtn.addEventListener('click', renderLists);
 refs.btnWatched.addEventListener('click', addFilmInWatchedList);
 refs.btnQueue.addEventListener('click', addFilmInQueue);
