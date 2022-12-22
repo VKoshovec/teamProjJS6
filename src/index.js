@@ -5,7 +5,7 @@ import './js/modal/modal-main';
 import { firebaseOptions } from './js/firebase-options';
 import { renderFilms } from './js/renderFilms';
 import { localeStorage } from './js/localeStorage';
-
+import * as part2 from './js/scrollUp';
 //getting popular film list
 movieLink.getMovies(1).then(res => console.log(res));
 
