@@ -4,6 +4,7 @@ import { movieLink } from './js/linkapi';
 import './js/modal/modal-main';
 import { firebaseOptions } from './js/firebase-options';
 import { renderFilms } from './js/renderFilms';
+import { localeStorage } from './js/localeStorage';
 
 //getting popular film list
 movieLink.getMovies(1).then(res => console.log(res));

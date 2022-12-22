@@ -23,4 +23,4 @@ const app = initializeApp(firebaseConfig);
 // console.log('FIREBASE', db);
 
 const dbRef = ref(getDatabase());
-console.log('dbRef', dbRef);
+// console.log('dbRef', dbRef);
