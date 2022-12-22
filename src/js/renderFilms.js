@@ -1,6 +1,7 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { getItemTemplate } from './getItemTemplate';
 import { movieLink } from './linkapi';
+
 const refs = {
   searchForm: document.querySelector('.search_form'),
   submitButton: document.querySelector('.search_btn'),
@@ -8,7 +9,8 @@ const refs = {
 };
 
 const numberPage = 1;
-let searcResult = [];
+const genresList = [];
+
 refs.searchForm.addEventListener('submit', handelSubmit);
 
 popularMovies();
@@ -17,7 +19,7 @@ popularMovies();
 
 async function handelSubmit(e) {
   e.preventDefault();
-
+  let searcResult = [];
   const {
     elements: { query },
   } = e.currentTarget;
@@ -27,8 +29,6 @@ async function handelSubmit(e) {
     return Notify.info('Будь ласка, напишіть назву фільму для пошуку!');
   }
   let serchValue = query.value;
-  console.log(query.value);
-  refs.searchForm.reset();
 
   searcResult = await movieLink.getMoviesByWord(serchValue);
   if (searcResult.length === 0) {
@@ -37,6 +37,7 @@ async function handelSubmit(e) {
   let films = searcResult.map(element => getItemTemplate(element));
   cleanerGallery();
   renderFilms(films);
+  refs.searchForm.reset();
   console.log(searcResult);
 }
 
@@ -44,12 +45,11 @@ async function handelSubmit(e) {
 
 async function popularMovies(numberPage) {
   const responce = await movieLink.getMovies(numberPage);
-  // const genres = await movieLink.getGenresList();
-  // const genresList = genres.map(element => element);
+  const genres = await movieLink.getGenresList();
 
   let films = responce.map(element => getItemTemplate(element));
-
   renderFilms(films);
+
   console.log(responce);
 }
 

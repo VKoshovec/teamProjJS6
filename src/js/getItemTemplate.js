@@ -24,15 +24,15 @@ export function getItemTemplate({
             />
             <source
               srcset="
-              https://image.tmdb.org/t/p/w500/${backdrop_path}  1x,
-              https://image.tmdb.org/t/p/w500/${backdrop_path}  2x 
+              ${img}  1x,
+             ${img}  2x 
                                       "
               media="(min-width: 768px)"
             />
             <source
               srcset="
-              https://image.tmdb.org/t/p/w200/${backdrop_path}  1x,
-              https://image.tmdb.org/t/p/w200/${backdrop_path}  2x 
+              ${img}  1x,
+              ${img}  2x 
                                       "
               media="(max-width: 480px)"
             />
