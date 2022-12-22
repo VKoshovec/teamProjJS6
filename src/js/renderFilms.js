@@ -8,10 +8,14 @@ const refs = {
 };
 
 const numberPage = 1;
-
+let searcResult = [];
 refs.searchForm.addEventListener('submit', handelSubmit);
 
-function handelSubmit(e) {
+popularMovies();
+
+// Пошук за ключовим словом
+
+async function handelSubmit(e) {
   e.preventDefault();
 
   const {
@@ -22,26 +26,37 @@ function handelSubmit(e) {
     refs.searchForm.reset();
     return Notify.info('Будь ласка, напишіть назву фільму для пошуку!');
   }
-
-  //   searchValue = searchQuery.value;
+  let serchValue = query.value;
   console.log(query.value);
   refs.searchForm.reset();
+
+  searcResult = await movieLink.getMoviesByWord(serchValue);
+  if (searcResult.length === 0) {
+    return Notify.info('За вашим запитом нічого не знайдено');
+  }
+  let films = searcResult.map(element => getItemTemplate(element));
+  cleanerGallery();
+  renderFilms(films);
+  console.log(searcResult);
 }
 
-async function renderFilms(numberPage) {
-  let films = [];
+// Перший рендер сторінки
+
+async function popularMovies(numberPage) {
   const responce = await movieLink.getMovies(numberPage);
-  const genres = await movieLink.getGenresList();
+  // const genres = await movieLink.getGenresList();
   // const genresList = genres.map(element => element);
 
-  films = responce.map(element => getItemTemplate(element));
+  let films = responce.map(element => getItemTemplate(element));
 
-  refs.filmList.insertAdjacentHTML('beforeend', films.join(''));
+  renderFilms(films);
   console.log(responce);
 }
 
-renderFilms();
+function renderFilms(films) {
+  refs.filmList.insertAdjacentHTML('beforeend', films.join(''));
+}
 
-// function cleanerGallery() {
-//   refs.photoCards.innerHTML = '';
-// }
+function cleanerGallery() {
+  refs.filmList.innerHTML = '';
+}
