@@ -3,6 +3,7 @@ import * as part2 from './js/part2';
 import { movieLink } from './js/linkapi';
 import './js/modal/modal-main';
 import { firebaseOptions } from './js/firebase-options';
+import { localeStorage } from './js/localeStorage';
 
 //getting popular film list
 movieLink.getMovies(1).then(res => console.log(res));
