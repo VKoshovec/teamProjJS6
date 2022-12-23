@@ -34,12 +34,15 @@
     color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
-  &:focus,
+  &:focus {
+    border: 1px solid  #ff6b08;
+    cursor: pointer;
+  }
+
   &.current {
     color: #ffffff;
     fill: #ffffff;
     background-color: #ff6b08;
-    cursor: pointer;
   }
 }
 
@@ -57,6 +60,7 @@
   line-height: calc(16 / 12);
   border: none;
   border-radius: 5px;
+  cursor: default;
 }
 
 .back {

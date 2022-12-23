@@ -1,37 +1,33 @@
-import { trendMovies } from './requests';
+import { trendMovies,  searchMoies } from './requests';
 import { refs } from './refs';
 
-// movieLink.getMovies(1).then(res => pagination(res.data, "trending"));
+let qwery = "";
 
-export function pagination(currentPage, totalPage, qwery) {
+export function pagination(currentPage, totalPage, qweryWord) {
   refs.pageNavigation.style.display = 'none';
   refs.pageBack.style.display = 'none';
   refs.pageNext.style.display = 'none';
-  // let currentPage = 0;
-  // let totalPage = 0;
   const pages = [];
   refs.pages.innerHTML = '';
-  // totalPage = movies.total_pages;
-  // currentPage = movies.page;
-
+  qwery = qweryWord;
   makeArray(pages, currentPage, totalPage);
 
   if (totalPage > 1) {
     refs.pageNavigation.style.display = 'flex';
     navigationRender(pages, currentPage, totalPage);
-    refs.pageNavigation.addEventListener('click', navigation, { once: true });
   }
 
-  if (totalPage > 2 && currentPage !== totalPage)
-    refs.pageNext.style.display = 'flex';
+  if (totalPage > 2 && currentPage !== totalPage) refs.pageNext.style.display = 'flex';
   if (totalPage > 2 && currentPage > 1) refs.pageBack.style.display = 'flex';
 
   function navigationRender(pages, pageCur, pageTot) {
     const markupPages = pages
       .map(page => makePage(page, pageCur, pageTot))
       .join('');
-
+      // console.log("render");
     refs.pages.insertAdjacentHTML('beforeend', markupPages);
+    refs.pageNavigation.addEventListener('click', navigation, { once: true });
+    // refs.pageNavigation.addEventListener('click', navigation, false);
   }
 
   function navigation(event) {
@@ -41,6 +37,8 @@ export function pagination(currentPage, totalPage, qwery) {
       nav = event.target.parentNode.dataset.nav;
     if (event.target.nodeName.toUpperCase() === 'USE')
       nav = event.target.parentNode.parentNode.dataset.nav;
+    // refs.pageNavigation.removeEventListener('click', navigation, false);
+      // console.log("click", nav);
 
     switch (nav) {
       case 'next':
@@ -55,25 +53,25 @@ export function pagination(currentPage, totalPage, qwery) {
         switchQwery(qwery, nav);
     }
   }
+
   function switchQwery(qwery, numPage) {
     switch (qwery) {
-      case 'trending':
+      case "trending":
+        // console.log("trend", qwery, numPage);
         trendMovies(numPage);
-        // movieLink
-        // .getMovies(numPage)
-        // .then(res => pagination(res.data, 'trending'));
         break;
 
-      case 'watched':
+      case "watched":
         // watched(numPage);
         break;
 
-      case 'queue':
+      case "queue":
         // queue(numPage);
         break;
-
+  
       default:
-      // movieLink1.getMovies(qwery, numPage);
+        // console.log("word", qwery, numPage);
+        searchMoies(qwery, numPage);
     }
   }
 
