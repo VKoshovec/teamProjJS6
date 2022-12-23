@@ -10,6 +10,8 @@ import { trendMovies } from './js/requests';
 
 
 
+import { header } from './js/header';
+import * as part2 from './js/scrollUp';
 //getting popular film list
 // movieLink.getMovies(1).then(res => console.log(res));
 
@@ -26,3 +28,5 @@ import { trendMovies } from './js/requests';
 // movieLink.getGenresList().then(res => console.log(res));
 
 // renderFilms(1);
+
+trendMovies(1);
