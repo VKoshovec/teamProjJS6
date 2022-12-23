@@ -7,7 +7,7 @@ const switchOnLibrary = e => {
   refs.libraryBtn.classList.add('active');
 
   refs.header.classList.add('header__liberty');
-  refs.searchInput.style.display = 'none';
+  refs.searcBox.style.display = 'none';
 
   refs.watchedBtn.style.display = 'flex';
   refs.queueBtn.style.display = 'flex';

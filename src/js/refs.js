@@ -9,6 +9,7 @@ export const refs = {
 
  header: document.querySelector('.header'),
  //searchInput: document.querySelector('.input-wrapper'),
+ searcBox: document.querySelector('.input-wrapper'),
  libraryBtn: document.querySelector('.nav_library'),
  homeBtn: document.querySelector('.nav_home'),
  watchedBtn: document.querySelector('.watched__btn'),
