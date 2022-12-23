@@ -27,6 +27,9 @@
     border-radius: 5px;
     overflow: hidden;
 
+    transform: scale(1);
+    transition: transform 250ms linear;
+
     @media screen and (max-width: 767px) {
         margin-bottom: 20px;
     }
@@ -44,6 +47,11 @@
     @media screen and (min-width: 768px) {
         margin-bottom: 40px;
     }
+}
+
+.film-list__item:hover,
+.film-list__item:focus {
+    transform: scale(1.03);
 }
 
 .film-list__link {
