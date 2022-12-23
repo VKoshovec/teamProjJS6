@@ -22,11 +22,8 @@
 .film-list__item {
     display: flex;
     justify-content: center;
-    flex-grow: 1;
+    align-items: center;
     width: 100%;
-    height: 100%;
-    margin-right: 0;
-    margin-left: 0;
     border-radius: 5px;
     overflow: hidden;
 
@@ -59,6 +56,19 @@
     }
 }
 
+.film-list__top-wrap {
+    border-radius: 5px;
+    overflow: hidden;
+
+    @media screen and (min-width: 768px) {
+        height: 455px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        height: 574px;
+    }
+}
+
 .film-data {
     height: 32px;
     padding-top: 10px;
@@ -67,6 +77,7 @@
         
     @media screen and (min-width: 1280px) {
         height: 48px; 
+        flex-grow: 1;
     }
 }
 
@@ -76,30 +87,34 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 12px;
-    line-height: 1.33px;
+    font-size: 10px;
+    line-height: 1.2px;
     text-transform: uppercase;
     color: #000000;
 
+    @media screen and (min-width: 320px) and (max-width: 479px) {
+        line-height: 1.1px;
+    }
+
+
     @media screen and (min-width: 1280px) {
-        font-size: 20px;
-        line-height: 1.2px;
+        font-size: 14px;
+        line-height: 1.1px;
     }
 }
 
 .film-data__info {
     display: flex;
     height: 10px;
-
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 12px;
+    font-size: 10px;
     line-height: 1.33px;
 
     @media screen and (min-width: 1280px) {
         height: 20px;
-        font-size: 20px;
+        font-size: 15px;
         line-height: 1.2px;
     }
 }
@@ -110,13 +125,13 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 12px;
+    font-size: 10px;
     line-height: 1.33px;
     color: #FF6B08;
 
     @media screen and (min-width: 1280px) {
         align-items: flex-end;
-        font-size: 20px;
+        font-size: 15px;
         line-height: 1.2px;
     }
 }
@@ -128,14 +143,13 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 12px;
+    font-size: 10px;
     line-height: 1.33px;
     color: #FF6B08;
-    // border-left: 1px solid #FF6B08; 
-
+    
     @media screen and (min-width: 1280px) {
         align-items: flex-end;
-        font-size: 20px;
+        font-size: 15px;
         line-height: 1.2px;
     }
 }
