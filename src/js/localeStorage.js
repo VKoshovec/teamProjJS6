@@ -1,32 +1,13 @@
 import { refs } from './refs';
+import { movieLink } from './linkapi';
+// import { getItemTemplate } from './getItemTemplate';
+// import { renderFilms } from './renderFilms';
 
 const KEY_STORAGE_WATCHED = 'watched-films';
 const KEY_STORAGE_QUEUE = 'films-in-the-queue';
 
 const formDataWatched = [];
 const formDataQueue = [];
-
-export const getWatchedList = () => {
-  if (formDataWatched === []) {
-    console.log('немає переглянутих фільмів');
-    return;
-  }
-
-  const savedData = localStorage.getItem(KEY_STORAGE_WATCHED);
-  const parseData = JSON.parse(savedData);
-  return parseData || [];
-};
-
-export const getQueueList = () => {
-  if (formDataQueue === {}) {
-    console.log('немає фільмів доданих у чергу');
-    return;
-  }
-
-  const savedData = localStorage.getItem(KEY_STORAGE_QUEUE);
-  const parseData = JSON.parse(savedData);
-  return parseData || [];
-};
 
 const removeFromWatchedList = () => {
   if (refs.btnWatched.hasAttribute('[data-action = watched]')) {
@@ -42,31 +23,88 @@ const removeFromQueue = () => {
   }
 };
 
-const addFilmInWatchedList = event => {
-  formDataWatched.push({ id: Date.now(), name: 'newName', year: 'someYear' });
-  // refs.btnWatched.textContent = 'Remove from watched';
-  // refs.btnWatched.setAttribute('[data-action = watched]')
-  // refs.btnQueue.setAttribute('disabled', 'true')
-
-  localStorage.setItem(KEY_STORAGE_WATCHED, JSON.stringify(formDataWatched));
+const getItemTempl = ({ title, poster_path, year, genres, id }) => {
+  return `<li class="film-list__item" id= ${id}>
+    <a href="" class="film-list__link link">
+        <div class="film-list__top-wrap">
+            <picture>
+                <source
+                srcset="
+                   ${movieLink.getImageUrl(poster_path, 500)}  1x,
+                   ${movieLink.getImageUrl(poster_path, 500)}  2x "
+                media="(min-width: 1280px)"
+                />
+                <source
+                srcset="
+                  ${movieLink.getImageUrl(poster_path, 500)}  1x,
+                  ${movieLink.getImageUrl(poster_path, 500)}  2x"
+                   media="(min-width: 768px)"
+                />
+                <source
+                srcset="
+                  ${movieLink.getImageUrl(poster_path, 500)}  1x,
+                  ${movieLink.getImageUrl(poster_path, 500)}  2x"
+                   media="(max-width: 480px)"
+                />
+                <img src="./images/film-1-mob-1x.jpg" 
+                alt="film" />
+            </picture>
+        </div>
+        <div class="film-data">
+          <h2 class="film-data__title">${title}</h2>
+          <div class="film-data__info">
+            <p class="film-data__genres"></p>
+            <p class="film-data__year">| ${year}</p>
+          </div>
+        </div>
+      </a>
+    </li>`;
 };
 
-const addFilmInQueue = event => {
-  console.log(event);
-  formDataQueue.push({ id: Date.now(), name: 'newName', year: 'someYear' });
-  // refs.btnQueue.textContent = 'Remove from queue';
-  // refs.btnQueue.setAttribute('[data-action = in-queue]')
-  // refs.btnWatched.setAttribute('disabled', 'true')
-
-  localStorage.setItem(KEY_STORAGE_QUEUE, JSON.stringify(formDataQueue));
+export const addFilmInWatchedList = (btn, id) => {
+  btn.addEventListener('click', () => {
+    formDataWatched.push(id);
+    localStorage.setItem(KEY_STORAGE_WATCHED, JSON.stringify(formDataWatched));
+  });
 };
 
-const renderLists = e => {
-  const currentList = [...getWatchedList(), ...getQueueList()];
-
-  refs.filmList.insertAdjacentHTML('beforeend', currentList);
+export const addFilmInQueue = (btn, id) => {
+  btn.addEventListener('click', () => {
+    formDataQueue.push(id);
+    localStorage.setItem(KEY_STORAGE_QUEUE, JSON.stringify(formDataQueue));
+  });
 };
 
-// refs.libraryBtn.addEventListener('click', renderLists);
-refs.btnWatched.addEventListener('click', addFilmInWatchedList);
-// refs.btnQueue.addEventListener('click', addFilmInQueue);
+const getWatchedList = () => {
+  const savedData = localStorage.getItem(KEY_STORAGE_WATCHED);
+  const parseData = JSON.parse(savedData);
+  refs.filmList.innerHTML = '';
+
+  const createArr = parseData.map(id => {
+    movieLink
+      .getMoviesById(id)
+      .then(({ title, poster_path, year, genres, id }) => {
+        const item = getItemTempl({ title, poster_path, year, genres, id });
+        refs.filmList.insertAdjacentHTML('beforeend', item);
+      });
+  });
+};
+
+const getQueueList = () => {
+  const savedData = localStorage.getItem(KEY_STORAGE_QUEUE);
+  const parseData = JSON.parse(savedData);
+  refs.filmList.innerHTML = '';
+  console.log(parseData);
+
+  const createArr = parseData.map(id => {
+    movieLink
+      .getMoviesById(id)
+      .then(({ title, poster_path, year, genres, id }) => {
+        const item = getItemTempl({ title, poster_path, year, genres, id });
+        refs.filmList.insertAdjacentHTML('beforeend', item);
+      });
+  });
+};
+
+refs.queueBtn.addEventListener('click', getQueueList);
+refs.watchedBtn.addEventListener('click', getWatchedList);

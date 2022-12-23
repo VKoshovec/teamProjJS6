@@ -1,5 +1,6 @@
 import { movieLink } from '../linkapi';
 import { getMovieById } from '../modal/getMovieById';
+import { addFilmInWatchedList, addFilmInQueue } from '../localeStorage';
 
 const refsO = {
   listFilm: document.querySelector('.film-list'),
@@ -41,6 +42,12 @@ function onClickItem(e) {
       refsO.movieCard.insertAdjacentHTML('beforeend', render);
       const modalClose = document.querySelector('.js-btn-close-modal');
       modalClose.addEventListener('click', closeMainModal);
+
+      const btnWatched = document.querySelector('.film-btn__watched');
+      addFilmInWatchedList(btnWatched, id);
+
+      const btnQueue = document.querySelector('.film-btn__queue');
+      addFilmInQueue(btnQueue, id);
     })
     .catch(err => console.log(err));
 
