@@ -56,12 +56,13 @@ export const movieLink = {
     },
 
     //Objec method to get movies by name
-    async getMoviesByWord ( queryWord ) {
+    async getMoviesByWord (queryWord, pageNumber) {
             
         const params = {
             api_key: keyApi,
             language: 'en-US',
             query: queryWord,
+            page: pageNumber,
             include_adult: false,
         };
 

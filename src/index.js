@@ -5,8 +5,10 @@ import './js/modal/modal-main';
 import './js/modal/modal-team';
 import { firebaseOptions } from './js/firebase-options';
 import { renderFilms } from './js/renderFilms';
-import { trendMovies } from './js/requests';
 import { localeStorage } from './js/localeStorage';
+import { trendMovies } from './js/requests';
+
+
 
 //getting popular film list
 // movieLink.getMovies(1).then(res => console.log(res));
@@ -24,4 +26,3 @@ import { localeStorage } from './js/localeStorage';
 // movieLink.getGenresList().then(res => console.log(res));
 
 // renderFilms(1);
-trendMovies(1);

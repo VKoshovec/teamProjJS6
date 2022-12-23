@@ -91,7 +91,10 @@ color: #FFFFFF;
     border: transparent;
     border-bottom: 0.5px solid #FFFFFF;
     background-color: transparent;
-    &:hover{
+    &:hover,
+    &:focus {
+        color: #FFFFFF;
+
         border-bottom: 0.5px solid 
         #FF6B08;
     }
