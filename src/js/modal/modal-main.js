@@ -1,13 +1,19 @@
+import { movieLink } from '../linkapi';
+import { getMovieById } from '../modal/getMovieById';
+
 const refsO = {
   listFilm: document.querySelector('.film-list'),
   filmCardItem: document.querySelector('.film-list__item'),
   backdrop: document.querySelector('.js-backdrop'),
-  modalClose: document.querySelector('.js-btn-close-modal'),
+  // modalClose: document.querySelector('.js-btn-close-modal'),
   filmListCard: document.querySelector('.film-list__item'),
+  movieCard: document.querySelector('.js-main-modal'),
 };
 
+// console.log(refsO.modalClose);
+
 refsO.listFilm.addEventListener('click', onClickItem);
-refsO.modalClose.addEventListener('click', closeMainModal);
+// refsO.modalClose.addEventListener('click', closeMainModal);
 refsO.backdrop.addEventListener('click', onBackdropClick);
 
 function onClickItem(e) {
@@ -15,7 +21,29 @@ function onClickItem(e) {
   if (e.currentTarget === e.target) {
     return;
   }
-  console.log(refsO.filmListCard.getAttribute('id'));
+  const parent = e.target.closest('li');
+  let { id } = parent;
+  console.log('li', id);
+
+  movieLink
+    .getMoviesById(id)
+    .then(data => {
+      const { genres } = data;
+      // const genre = map.genres(genre => genre);
+
+      console.log(genres);
+      const render = getMovieById(data, genres);
+      console.log(render);
+      return render;
+    })
+    .then(render => {
+      refsO.movieCard.innerHTML = '';
+      refsO.movieCard.insertAdjacentHTML('beforeend', render);
+      const modalClose = document.querySelector('.js-btn-close-modal');
+      modalClose.addEventListener('click', closeMainModal);
+    })
+    .catch(err => console.log(err));
+
   showMainModal();
 }
 
