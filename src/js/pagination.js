@@ -19,7 +19,7 @@ export function pagination(currentPage, totalPage, qwery) {
   if (totalPage > 1) {
     refs.pageNavigation.style.display = 'flex';
     navigationRender(pages, currentPage, totalPage);
-    refs.pageNavigation.addEventListener('click', navigation);
+    refs.pageNavigation.addEventListener('click', navigation, { once: true });
   }
 
   if (totalPage > 2 && currentPage !== totalPage)
