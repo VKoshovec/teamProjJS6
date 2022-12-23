@@ -17,6 +17,14 @@
   pointer-events: none;
 }
 
+.film__poster {
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+  }
+}
+
 .backdrop.is-hidden .main-modal {
   transform: translate(-50%, -50%) scale(0);
 }
@@ -38,13 +46,13 @@
   @include tablet {
     padding: 40px 72px 40px 36px;
     width: 704px;
-    height: 552px;
+    // height: 552px;
   }
 
   @include desctop {
     padding: 40px 12px;
     width: 806px;
-    min-height: 558px;
+    // height: 558px;
   }
 }
 
