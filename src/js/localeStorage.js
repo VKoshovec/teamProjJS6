@@ -1,17 +1,12 @@
+import { refs } from './refs';
+
 const KEY_STORAGE_WATCHED = 'watched-films';
 const KEY_STORAGE_QUEUE = 'films-in-the-queue';
 
 const formDataWatched = [];
 const formDataQueue = [];
 
-const refs = {
-  btnWatched: document.querySelector('.film-btn__watched'),
-  btnQueue: document.querySelector('.film-btn__queue'),
-  libraryBtn: document.querySelector('.nav_library'),
-  filmList: document.querySelector('.film-list'),
-};
-
-const getWatchedList = () => {
+export const getWatchedList = () => {
   if (formDataWatched === []) {
     console.log('немає переглянутих фільмів');
     return;
@@ -19,10 +14,10 @@ const getWatchedList = () => {
 
   const savedData = localStorage.getItem(KEY_STORAGE_WATCHED);
   const parseData = JSON.parse(savedData);
-  return parseData;
+  return parseData || [];
 };
 
-const getQueueList = () => {
+export const getQueueList = () => {
   if (formDataQueue === {}) {
     console.log('немає фільмів доданих у чергу');
     return;
@@ -30,7 +25,7 @@ const getQueueList = () => {
 
   const savedData = localStorage.getItem(KEY_STORAGE_QUEUE);
   const parseData = JSON.parse(savedData);
-  return parseData;
+  return parseData || [];
 };
 
 const removeFromWatchedList = () => {
@@ -57,6 +52,7 @@ const addFilmInWatchedList = event => {
 };
 
 const addFilmInQueue = event => {
+  console.log(event);
   formDataQueue.push({ id: Date.now(), name: 'newName', year: 'someYear' });
   // refs.btnQueue.textContent = 'Remove from queue';
   // refs.btnQueue.setAttribute('[data-action = in-queue]')
@@ -66,14 +62,11 @@ const addFilmInQueue = event => {
 };
 
 const renderLists = e => {
-  e.preventDefault();
-
-  refs.filmList.innerHTML = '';
   const currentList = [...getWatchedList(), ...getQueueList()];
 
   refs.filmList.insertAdjacentHTML('beforeend', currentList);
 };
 
-refs.libraryBtn.addEventListener('click', renderLists);
+// refs.libraryBtn.addEventListener('click', renderLists);
 refs.btnWatched.addEventListener('click', addFilmInWatchedList);
-refs.btnQueue.addEventListener('click', addFilmInQueue);
+// refs.btnQueue.addEventListener('click', addFilmInQueue);
