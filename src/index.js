@@ -26,4 +26,5 @@ import * as part2 from './js/scrollUp';
 // movieLink.getGenresList().then(res => console.log(res));
 
 // renderFilms(1);
+
 trendMovies(1);

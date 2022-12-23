@@ -1,209 +1,245 @@
 .header {
-    padding-top: 52px;
-    margin-left: 34px;
-    color:red;
-    background-color: #000000;
-    background-image:linear-gradient(rgba(0, 0, 0, 0.56),rgba(0, 0, 0, 0.56)), 
+  background-image: linear-gradient(rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.26)),
     url(/src/images/header\ mobile\ 1x.jpg);
-    background-repeat: no-repeat;
-    max-width: 100%;
-    height: 230px;
-    margin-right: auto;
-    margin-left: auto;
-    background-position: center;
-    background-size: cover;
-    @media (min-device-pixel-ratio:2),
-        (min-resolution: 192dpi),
-        (min-resolution: 2dppx) {
-            background-image:linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-            url(/src/images/header\ mobile\ 2x.jpg);
-}
-@media screen and (min-width:768px){
-    background-image:linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url(/src/images/header\ tablet\ 1x.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  max-width: 100%;
+  height: 215px;
+  padding-top: 40px;
+
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.26)),
+      url(/src/images/header\ mobile\ 2x.jpg);
+  }
+
+  @media screen and (min-width: 768px) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.26)),
+      url(/src/images/header\ tablet\ 1x.jpg);
     @media (min-device-pixel-ratio: 2),
-                (min-resolution: 192dpi),
-                (min-resolution: 2dppx) {
-                    background-image:linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-                    url(/src/images/header\ tablet\ 2x.jpg) 
-                }
-}
-@media screen and (min-width:1280px){
-    background-image:linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url(/src/images/header\ decktop\ 1x.jpg);
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(/src/images/header\ tablet\ 2x.jpg);
+    }
+  }
+  @media screen and (min-width: 1280px) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.26)),
+      url(/src/images/header\ decktop\ 1x.jpg);
     @media (min-device-pixel-ratio: 2),
-                (min-resolution: 192dpi),
-                (min-resolution: 2dppx) {
-                    background-image:linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-                    url(/src/images/header\ decktop\ 2x.jpg) 
-                }
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(/src/images/header\ decktop\ 2x.jpg);
+    }
+  }
 }
+
+.header_wrapper {
+  padding: 0px 32px 0px 32px;
 }
-.header_wrapper{
-    padding: 0px 32px 0px 32px;
+
+.logo {
+  display: block;
 }
-.logo{
-    display: block;
+
+.logo__icon {
+  margin-right: 12px;
 }
-.logo__icon{
-    margin-right: 12px;
-}
-.logo_text{
-display: none;
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 500;
-font-size: 30px;
-line-height: 35px;
-color: #FFFFFF;
-@media screen and (min-width:768px){
-    display:inline-block;
-}
-@media screen and (min-width:1280px){
+
+.logo_text {
+  display: none;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+  color: #ffffff;
+  @media screen and (min-width: 768px) {
     display: inline-block;
+  }
+  @media screen and (min-width: 1280px) {
+    display: inline-block;
+  }
 }
-}
+
 .active {
-    position: relative;
-    color:#ffffff;
-   &::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: #FF001B;;
-            border-radius: 2px;
-            width: 34px;
-        }}
-.search_form{
-    display: flex;
-   
+  position: relative;
+  color: #ffffff;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #ff001b;
+    border-radius: 2px;
+  }
 }
-.input-wrapper{
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
+
+.input-wrapper {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
 }
-.search-field{
+
+.search_form {
+  display: flex;
+}
+
+.search-field {
   width: 280px;
-    border: transparent;
-    border-bottom: 0.5px solid #FFFFFF;
-    background-color: transparent;
-    &:hover{
-        border-bottom: 0.5px solid 
-        #FF6B08;
-    }
-    &::placeholder{
-        font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 16px;
-color: #FFFFFF;
-    }
-    @media screen and (min-width:768px){
-        width: 336px;   
-    }
-    @media screen and (min-width:1280px){
-        width: 394px;   
-    }
-}
-.search_btn{
-    position: absolute;
-top: 0;
-    width: 12px;
-    height: 12px;
-    background-color: transparent;
-    border: #40c59d;
-}
-.search_icon{
-    position: absolute;
-   top: 0;
-   right: 0;
-    display: block;
-}
-.navigation{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 41px;
-}
-.nav_list{
-    display: flex;
-    gap: 39px;
-}
-.nav_home,.nav_library {
-display: block;
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 500;
-font-size: 12px;
-line-height: 14px;
-text-transform: uppercase;
-color: #FFFFFF;
-}
-.header__liberty{
-    background-image:linear-gradient(rgba(0, 0, 0, 0.56),rgba(0, 0, 0, 0.56)), url(/src/images/header-liberty\ mobile\ 1x.jpg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    @media (min-device-pixel-ratio:2),
-        (min-resolution: 192dpi),
-        (min-resolution: 2dppx) {
-            background-image:linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-                url(/src/images/header-liberty\ mobile\ 2x.jpg)
-};
-
-   @media screen and (min-width:768px){
-    background-image:linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url(/src/images/header-liberty\ \ tablet\ 1x.jpg);
-    @media (min-device-pixel-ratio: 2),
-                (min-resolution: 192dpi),
-                (min-resolution: 2dppx) {
-                    background-image:linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-                    url(/src/images/header-liberty\ \ tablet\ 2x.jpg) 
-                }
-}
-@media screen and (min-width:1280px){
-    background-image:linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url(/src/images/header-liberty\ \ decktop\ 1x.jpg);
-    @media (min-device-pixel-ratio: 2),
-                (min-resolution: 192dpi),
-                (min-resolution: 2dppx) {
-                    background-image:linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-                    url(/src/images/header-liberty\ \ decktop\ 2x.jpg) 
-                }
-}
-}
-
-.liberty__btn{
-    display: none;
+  border: transparent;
+  border-bottom: 0.5px solid #ffffff;
+  background-color: transparent;
+  color: #ffffff;
+  &:hover {
+    border-bottom: 0.5px solid #ff6b08;
+  }
+  &:focus {
+    outline: none;
+    border-bottom: 0.5px solid #ff6b08;
+  }
+  &::placeholder {
     font-family: 'Roboto';
     font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height:16px;
-    min-width: 152px;
-    height: 44px;
-    border: 1px solid #FFFFFF;
-    border-radius: 5px;
-    color: #FFFFFF;
-    background-color: transparent;
-    cursor: pointer;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #ffffff;
+  }
+  @media screen and (min-width: 768px) {
+    width: 336px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 394px;
+  }
 }
-.active__btn{
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 500;
-font-size: 12px;
-line-height: 16px;
-min-width: 152px;
-height: 44px;
-background: #FF6B01;
-box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
-border-radius: 5px;
-border: transparent;
-color: #FFFFFF;
-cursor: pointer;
+
+.search_btn {
+  position: absolute;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  background-color: transparent;
+  border: none;
+}
+
+.search_icon {
+  position: absolute;
+  top: 3px;
+  right: 0;
+  display: block;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.nav_list {
+  display: flex;
+  gap: 39px;
+}
+
+.nav_home,
+.nav_library {
+  display: block;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+// LIBRARY PAGE
+.header__liberty {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url(/src/images/header-liberty\ mobile\ 1x.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  width: 100%;
+
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(/src/images/header-liberty\ mobile\ 2x.jpg);
+  }
+
+  @media screen and (min-width: 768px) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(/src/images/header-liberty\ \ tablet\ 1x.jpg);
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(/src/images/header-liberty\ \ tablet\ 2x.jpg);
+    }
+  }
+  @media screen and (min-width: 1280px) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(/src/images/header-liberty\ \ decktop\ 1x.jpg);
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(/src/images/header-liberty\ \ decktop\ 2x.jpg);
+    }
+  }
+}
+
+.btn-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.liberty__btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  min-width: 152px;
+  height: 44px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:active,
+  &:focus {
+    background: #ff6b01;
+    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+    border: transparent;
+  }
 }

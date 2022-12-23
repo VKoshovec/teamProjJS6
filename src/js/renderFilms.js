@@ -30,21 +30,22 @@ const refs = {
 //   refs.searchForm.reset();
 // }
 
-export async function renderFilms(numberPage) {
+export async function renderFilms(responce, genres) {
 
   refs.filmList.innerHTML = "";
 
   let films = [];
-  const responce = await movieLink.getMovies(numberPage);
-  const genres = await movieLink.getGenresList();
+  // const apiData = await movieLink.getMovies(numberPage);
+  // const responce = await apiData.results;
+
+  // const genres = await movieLink.getGenresList();
 
   // const genresList = genres.map(element => element);
 
-  films = responce.map (element => getItemTemplate(element, genres));
-  refs.filmList.insertAdjacentHTML('beforeend', films.join(''));
+   films = responce.map (element => getItemTemplate(element, genres));
+   refs.filmList.insertAdjacentHTML('beforeend', films.join(''));
   
-
-  // console.log(responce);
+   console.log(responce);
 
 }
 
