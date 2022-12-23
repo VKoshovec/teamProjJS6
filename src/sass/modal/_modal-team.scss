@@ -1,0 +1,179 @@
+:root {
+  --cubic: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop-team {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  background-color: rgba(48, 48, 48, 0.599);
+  z-index: 1;
+  transition: opacity 300ms var(--cubic), visibility 300ms var(--cubic);
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.backdrop-team.is-hidden .main-modal {
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.btn-close-modal-team {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 8;
+  top: 8;
+  width: 30px;
+  height: 30px;
+  background-color: #ffff;
+  color: #ff6b08;
+  border: 1px solid #ff6b08;
+  border-radius: 50%;
+  cursor: pointer;
+  &:hover {
+    animation: jello-diagonal-1 1s both;
+  }
+  &:focus {
+    animation: jello-diagonal-1 1s both;
+  }
+}
+@keyframes jello-diagonal-1 {
+  0% {
+    transform: skew(0deg 0deg);
+  }
+  30% {
+    transform: skew(25deg 25deg);
+  }
+  40% {
+    transform: skew(-15deg, -15deg);
+  }
+  50% {
+    transform: skew(15deg, 15deg);
+  }
+  65% {
+    transform: skew(-5deg, -5deg);
+  }
+  75% {
+    transform: skew(5deg, 5deg);
+  }
+  100% {
+    transform: skew(0deg 0deg);
+  }
+}
+
+.team-modal {
+  padding: 48px 20px 40px;
+  width: 280px;
+  height: 700px;
+  height: px;
+  background-color: #f7f7f7;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: auto;
+  overflow-y: auto;
+  transform: translate(-50%, -50%);
+  transition: transform 300ms var(--cubic);
+
+  @media screen and (min-width: 480px) and (max-width: 767px) {
+    height: 700px;
+    width: 460px;
+  }
+
+  @include tablet {
+    width: 704px;
+    height: 552px;
+  }
+
+  @include desctop {
+    padding: 40px 12px;
+    width: 806px;
+    min-height: 558px;
+  }
+}
+.team-title {
+  display: flex;
+  justify-content: center;
+  font-size: 35px;
+  font-weight: 500;
+  color: black;
+  margin-bottom: 30px;
+  text-decoration: none;
+}
+.team-title:hover,
+.team-title:focus {
+  text-shadow: 2px 2px 8px #000000;
+}
+
+.team-title-span {
+  color: #ff6b08;
+}
+
+.team-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.team-img {
+  margin: auto;
+  min-width: 150px;
+  border-radius: 60px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  display: inline-block;
+  height: 185px;
+  transition: 1s;
+}
+.team-img:hover {
+  transform: scale(1.1);
+}
+
+.team-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0px 0px 4px 4px;
+  margin-bottom: 30px;
+
+  @media screen and (min-width: 480px) {
+    width: calc((100% - 90px) / 2);
+    margin-right: 10px;
+  }
+  @media screen and (min-width: 768px) {
+    width: calc((100% - 90px) / 3);
+    margin-right: 10px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: calc((100% - 90px) / 4);
+  }
+}
+
+.team-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #545454;
+  font-weight: 600;
+}
+
+.go-it {
+  width: 150px;
+  margin-right: auto;
+  margin-left: auto;
+  transition: 1s;
+}
+.go-it:hover {
+  transform: scale(1.1);
+}
