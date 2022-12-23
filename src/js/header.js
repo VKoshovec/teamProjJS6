@@ -12,7 +12,7 @@ const switchOnLibrary = e => {
   refs.watchedBtn.style.display = 'flex';
   refs.queueBtn.style.display = 'flex';
 
-  refs.filmList.innerHTML = 'Please return to the home page and add a movie!';
+  refs.filmList.innerHTML = '';
 };
 
 refs.libraryBtn.addEventListener('click', switchOnLibrary);
