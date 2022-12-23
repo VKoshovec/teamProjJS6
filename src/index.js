@@ -8,6 +8,8 @@ import { renderFilms } from './js/renderFilms';
 import { trendMovies } from './js/requests';
 import { localeStorage } from './js/localeStorage';
 
+import { header } from './js/header';
+
 //getting popular film list
 // movieLink.getMovies(1).then(res => console.log(res));
 
