@@ -17,8 +17,8 @@ export function getItemTemplate({
    }, []); 
 
     const year = (release_date) ? release_date.substr (0, 4) : "No release date";
-    const cardImg1x = (poster_path) ? movieLink.getImageUrl(poster_path, 300) : imageURL;
-    const cardImg2x = (poster_path) ? movieLink.getImageUrl(poster_path, 500) : imageURL;
+    const cardImg1x = (poster_path) ? movieLink.getImageUrl(poster_path, 500) : imageURL;
+    // const cardImg2x = (poster_path) ? movieLink.getImageUrl(poster_path, 500) : imageURL;
     const filmGenres = (GenresList.length) ? GenresList : ['No genre'];
       
 
@@ -29,19 +29,19 @@ export function getItemTemplate({
                 <source
                 srcset="
                    ${cardImg1x}  1x,
-                   ${cardImg2x}  2x "
+                   ${cardImg1x}  2x "
                 media="(min-width: 1280px)"
                 />
                 <source
                 srcset="
                   ${cardImg1x}  1x,
-                  ${cardImg2x}  2x"
+                  ${cardImg1x}  2x"
                    media="(min-width: 768px)"
                 />
                 <source
                 srcset="
                   ${cardImg1x}  1x,
-                  ${cardImg2x}  2x"
+                  ${cardImg1x}  2x"
                    media="(max-width: 480px)"
                 />
                 <img src="${cardImg1x}" 
