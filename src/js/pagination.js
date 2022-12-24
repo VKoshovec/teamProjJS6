@@ -1,7 +1,8 @@
 import { trendMovies,  searchMoies } from './requests';
 import { refs } from './refs';
 
-let qwery = "";
+let qwery = '';
+let actualPage = 0;
 
 export function pagination(currentPage, totalPage, qweryWord) {
   refs.pageNavigation.style.display = 'none';
