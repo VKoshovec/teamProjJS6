@@ -32,17 +32,17 @@
 .main-modal {
   padding: 48px 20px 40px;
   width: 280px;
-  // height: 940px;
+  height: 940px;
   background-color: #fff;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   transition: transform 300ms var(--cubic);
-  
-  @media screen and (min-width: 320px) and (max-width: 767px) {
-    overflow-y:auto;
-  }
+  overflow-y: auto;
+  // @media screen and (min-width: 320px) and (max-width: 767px) {
+  //   overflow-y:auto;
+  // }
 
   @include tablet {
     padding: 40px 72px 40px 36px;
