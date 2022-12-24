@@ -1,168 +1,165 @@
 .section {
-    padding-top: 20px;
-    
+  padding-top: 20px;
 }
 
 .film-list {
-    display: flex;
-    flex-wrap: wrap;
-    padding-right: 20px;
-    padding-left: 20px;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding-right: 20px;
+  padding-left: 20px;
+  justify-content: center;
 
-    @media screen and (min-width: 768px) {
-        margin-bottom: 40px;
-    }
+  @media screen and (min-width: 768px) {
+    margin-bottom: 40px;
+  }
 
-    @media screen and (min-width: 768px) and (max-width: 1279px) {
-        gap: 32px;
-    }
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    gap: 32px;
+  }
 
-    @media screen and (min-width: 1280px) {
-        row-gap: 32px;
-        column-gap: 16px;
-    }
+  @media screen and (min-width: 1280px) {
+    row-gap: 32px;
+    column-gap: 16px;
+  }
 }
 
 .film-list__item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    border-radius: 5px;
-    overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
 
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 
-    transform: scale(1);
-    transition: transform 250ms linear;
+  transform: scale(1);
+  transition: transform 250ms linear;
 
-    @media screen and (max-width: 767px) {
-        margin-bottom: 20px;
-    }
-    
-    @media screen and (min-width: 768px) and (max-width: 1279px){
-        width: calc((100% - 32px) / 2);
-    }
+  @media screen and (max-width: 767px) {
+    margin-bottom: 20px;
+  }
 
-    @media screen and (min-width: 1280px) {
-        width: calc((100% - 32px) / 3);
-    }
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    width: calc((100% - 32px) / 2);
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: calc((100% - 32px) / 3);
+  }
 }
 
 .film-list__item:last-child {
-    @media screen and (min-width: 768px) {
-        margin-bottom: 0px;
-    }
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0px;
+  }
 }
 
 .film-list__item:hover,
 .film-list__item:focus {
-    transform: scale(1.03);
-    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    
+  transform: scale(1.03);
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .film-list__link {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .film-list__top-wrap {
-    border-radius: 5px;
-    overflow: hidden;
+  border-radius: 5px;
+  overflow: hidden;
 
-    @media screen and (min-width: 768px) {
-        height: 455px;
-    }
+  @media screen and (min-width: 768px) {
+    height: 455px;
+  }
 
-    @media screen and (min-width: 1280px) {
-        height: 574px;
-    }
+  @media screen and (min-width: 1280px) {
+    height: 574px;
+  }
 }
 
 .film-data {
-    height: 32px;
-    padding-top: 10px;
-    border: 1px solid #EEEEEE;
-    border-top: none;
-        
-    @media screen and (min-width: 1280px) {
-        height: 48px; 
-        flex-grow: 1;
-    }
+  height: 32px;
+  padding-top: 10px;
+  border: 1px solid #eeeeee;
+  border-top: none;
+
+  @media screen and (min-width: 1280px) {
+    height: 48px;
+    flex-grow: 1;
+  }
 }
 
 .film-data__title {
-    display: block;
-    height: 10px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 10px;
-    line-height: 1.2px;
-    text-transform: uppercase;
-    color: #000000;
+  display: block;
+  height: 10px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.2px;
+  text-transform: uppercase;
+  color: #000000;
 
-    @media screen and (min-width: 320px) and (max-width: 479px) {
-        line-height: 1.1px;
-    }
+  @media screen and (min-width: 320px) and (max-width: 479px) {
+    line-height: 1.1px;
+  }
 
-
-    @media screen and (min-width: 1280px) {
-        font-size: 14px;
-        line-height: 1.1px;
-    }
+  @media screen and (min-width: 1280px) {
+    font-size: 14px;
+    line-height: 1.1px;
+  }
 }
 
 .film-data__info {
-    display: flex;
-    height: 10px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 10px;
-    line-height: 1.33px;
+  display: flex;
+  height: 10px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.33px;
 
-    @media screen and (min-width: 1280px) {
-        height: 20px;
-        font-size: 15px;
-        line-height: 1.2px;
-    }
+  @media screen and (min-width: 1280px) {
+    height: 20px;
+    font-size: 15px;
+    line-height: 1.2px;
+  }
 }
 
 .film-data__genres {
-    display: flex;
-    height: 10px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 10px;
-    line-height: 1.33px;
-    color: #FF6B08;
+  display: flex;
+  height: 10px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.33px;
+  color: #ff6b08;
 
-    @media screen and (min-width: 1280px) {
-        align-items: flex-end;
-        font-size: 15px;
-        line-height: 1.2px;
-    }
+  @media screen and (min-width: 1280px) {
+    align-items: flex-end;
+    font-size: 15px;
+    line-height: 1.2px;
+  }
 }
 
 .film-data__year {
-    display: flex;
-    height: 10px;
-    padding-left: 5px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 10px;
-    line-height: 1.33px;
-    color: #FF6B08;
-    
-    @media screen and (min-width: 1280px) {
-        align-items: flex-end;
-        font-size: 15px;
-        line-height: 1.2px;
-    }
+  display: flex;
+  height: 10px;
+  padding-left: 5px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.33px;
+  color: #ff6b08;
+
+  @media screen and (min-width: 1280px) {
+    align-items: flex-end;
+    font-size: 15px;
+    line-height: 1.2px;
+  }
 }

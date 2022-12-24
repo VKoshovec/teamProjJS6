@@ -8,6 +8,7 @@ const switchOnLibrary = e => {
 
   refs.header.classList.add('header__liberty');
   refs.searcBox.style.display = 'none';
+  refs.pageNavigation.style.display = 'none';
 
   refs.watchedBtn.style.display = 'flex';
   refs.queueBtn.style.display = 'flex';

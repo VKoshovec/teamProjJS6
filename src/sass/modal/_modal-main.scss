@@ -248,9 +248,10 @@ item-right--popularity {
   @include desctop {
     width: 136px;
   }
-}
-.btn-modal.is-active {
-  color: #fff;
-  background: #ff6b01;
-  border: transparent;
+
+  &:hover {
+    color: #fff;
+    background: #ff6b01;
+    border: transparent;
+  }
 }
