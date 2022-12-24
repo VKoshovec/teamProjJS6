@@ -60,7 +60,20 @@ function onClickItem(e) {
     .then(({ results }) => {
       // console.log(results);
       const teaser = results.map(video => video);
+      
+      
+      //fix no teaser
+      if (results.length == 0){
+        refsO.teaserBtnPlay.style.display = 'none';
+        return;
+      } ; 
+      //fix no teaser
+
+
       const treiler = teaser[teaser.length - 1];
+
+      // console.log(res_ult)
+
       let terailerKey = treiler.key;
       // const list = getVideoTemplates(terailerKey);
       // console.log(list);
