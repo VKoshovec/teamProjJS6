@@ -2,6 +2,7 @@ import { refs } from './refs';
 import { movieLink } from './linkapi';
 // import { getItemTemplate } from './getItemTemplate';
 import imageURL from '../images/placeholder.png';
+import Notiflix from 'notiflix';
 
 const KEY_STORAGE_WATCHED = 'watched-films';
 const KEY_STORAGE_QUEUE = 'films-in-the-queue';
@@ -96,6 +97,11 @@ export const getQueueList = () => {
 export const addFilmInWatchedList = (btn, id) => {
   btn.addEventListener('click', () => {
     formDataWatched = getDataFromWatched();
+
+    if (formDataWatched.includes(id)) {
+      Notiflix.Notify.info('The movie has already been added to the list!');
+      return;
+    }
     formDataWatched.push(id);
     localStorage.setItem(KEY_STORAGE_WATCHED, JSON.stringify(formDataWatched));
   });
@@ -104,6 +110,12 @@ export const addFilmInWatchedList = (btn, id) => {
 export const addFilmInQueue = (btn, id) => {
   btn.addEventListener('click', () => {
     formDataQueue = getDataFromQueue();
+
+    if (formDataQueue.includes(id)) {
+      Notiflix.Notify.info('The movie has already been added to the list!');
+      return;
+    }
+
     formDataQueue.push(id);
     localStorage.setItem(KEY_STORAGE_QUEUE, JSON.stringify(formDataQueue));
   });
