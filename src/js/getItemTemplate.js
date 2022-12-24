@@ -17,7 +17,7 @@ export function getItemTemplate({
    }, []); 
 
     const year = (release_date) ? release_date.substr (0, 4) : "No release date";
-    const cardImg1x = (poster_path) ? movieLink.getImageUrl(poster_path, 250) : imageURL;
+    const cardImg1x = (poster_path) ? movieLink.getImageUrl(poster_path, 300) : imageURL;
     const cardImg2x = (poster_path) ? movieLink.getImageUrl(poster_path, 500) : imageURL;
     const filmGenres = (GenresList.length) ? GenresList : ['No genre'];
       
