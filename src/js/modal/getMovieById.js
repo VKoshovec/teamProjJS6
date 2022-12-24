@@ -22,12 +22,7 @@ export function getMovieById(
   return `
 
       <div class="card-film film " id="${id}">
-      <button class="btn-close-modal js-btn-close-modal" type="button">
-        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M8 8L22 22"  />
-          <path d="M8 22L22 8"  />
-        </svg>
-      </button>
+      <button class="btn-close-modal js-btn-close-modal" type="button">X</button>
       <div class="film__poster">
         <img
           src="${movieLink.getImageUrl(poster_path, 500)} "
@@ -35,7 +30,6 @@ export function getMovieById(
           width="375"
           height="478"
         />
-        <button class="btn-play-trailer" id="teaser" type="button">Дивитись трейлер</button>
       </div>
       <div class="film__content">
         <h2 class="film__title">${title}</h2>
@@ -53,12 +47,10 @@ export function getMovieById(
           </ul>
           <ul class="film-list__right">
             <li class="item-right item-right--vote">
-              <span class="film-vote">${Number(
-                vote_average.toFixed(1)
-              )}</span>/<span>${vote_count}</span>
+              <span class="film-vote">${vote_average}</span>/<span>${vote_count}</span>
             </li>
             <li class="item-right item-right--popularity">
-              <span>${popularity.toFixed(1)}</span>
+              <span>${popularity}</span>
             </li>
             <li class="item-right"><span>${original_title}</span></li>
             <li class="item-right"><span>${genresList.join(', ')}</span></li>
@@ -74,7 +66,6 @@ export function getMovieById(
           <button class="btn-modal film-btn__queue">add to queue</button>
         </div>
       </div>
-      
     </div>                
        
 
