@@ -14,6 +14,7 @@ const switchOnLibrary = e => {
   refs.queueBtn.style.display = 'flex';
   refs.queueBtn.classList.add('active-btn');
 
+  refs.filmList.style.minHeight = '500px';
   getQueueList();
 };
 
