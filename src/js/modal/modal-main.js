@@ -1,11 +1,6 @@
 import { movieLink } from '../linkapi';
-import { getMovieById } from './getMovieById';
+import { getMovieById } from '../modal/getMovieById';
 import { addFilmInWatchedList, addFilmInQueue } from '../localStorage';
-import { getFetchVideo } from './video';
-import { getVideoTemplates } from './video';
-
-import * as basicLightbox from 'basiclightbox';
-const basicLightbox = require('basiclightbox');
 
 const refsO = {
   listFilm: document.querySelector('.film-list'),
@@ -14,7 +9,6 @@ const refsO = {
   // modalClose: document.querySelector('.js-btn-close-modal'),
   filmListCard: document.querySelector('.film-list__item'),
   movieCard: document.querySelector('.js-main-modal'),
-  teaserBtnPlay: null,
 };
 
 // console.log(refsO.modalClose);
@@ -40,6 +34,7 @@ function onClickItem(e) {
 
       // console.log(genres);
       const render = getMovieById(data, genres);
+      // console.log(render);
       return render;
     })
     .then(render => {
@@ -53,39 +48,8 @@ function onClickItem(e) {
 
       const btnQueue = document.querySelector('.film-btn__queue');
       addFilmInQueue(btnQueue, id);
-
-      refsO.teaserBtnPlay = document.querySelector('#teaser');
     })
     .catch(err => console.log(err));
-
-  getFetchVideo(id)
-    .then(({ results }) => {
-      console.log(results);
-      const teaser = results.map(video => video);
-      const treiler = teaser[teaser.length - 1];
-      terailerKey = treiler.key;
-      // const list = getVideoTemplates(terailerKey);
-      // console.log(list);
-      // return list;
-      return terailerKey;
-    })
-    .then(terailerKey => {
-      console.log(terailerKey);
-
-      const instance = basicLightbox.create(`
-    <iframe class="video" width="800" height="600" src="https://www.youtube.com/embed/${terailerKey}"
-  title="YouTube video player" frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen></iframe>
-   
-  `);
-      refsO.teaserBtnPlay.addEventListener('click', () => {
-        //   refsO.movieCard.insertAdjacentHTML('beforeend', list);
-        console.log('play video');
-
-        instance.show();
-      });
-    });
 
   showMainModal();
 }
@@ -113,11 +77,3 @@ function onEscKeyClick(e) {
     closeMainModal();
   }
 }
-
-// import * as basicLightbox from 'basiclightbox';
-
-// const instance = basicLightbox.create(`
-//     <iframe src="https://www.youtube.com/embed/E1oZhEIrer4" width="560" height="315" frameborder="0"></iframe>
-// `);
-
-// instance.show();

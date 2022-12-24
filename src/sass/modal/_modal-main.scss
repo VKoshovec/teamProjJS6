@@ -5,8 +5,8 @@
 .backdrop {
   position: fixed;
   top: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(48, 48, 48, 0.599);
   transition: opacity 300ms var(--cubic), visibility 300ms var(--cubic);
 }
@@ -32,17 +32,16 @@
 .main-modal {
   padding: 48px 20px 40px;
   width: 280px;
-  height: 940px;
+  // height: 940px;
   background-color: #fff;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   transition: transform 300ms var(--cubic);
-  overflow-y: auto;
-  // @media screen and (min-width: 320px) and (max-width: 767px) {
-  //   overflow-y:auto;
-  // }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    overflow-y: auto;
+  }
 
   @include tablet {
     padding: 40px 72px 40px 36px;
@@ -57,45 +56,16 @@
   }
 }
 
-.btn-close-modal{
+.btn-close-modal {
   position: absolute;
   right: 8;
   top: 8;
-  display: flex;
-  align-items:center;
-  justify-content: center;
-  padding: 8px;
   width: 30px;
   height: 30px;
-  stroke:#000000;
   // border: 1px solid black;
   background-color: transparent;
-  border-radius: 100%;
   border: none;
-  transition: background-color 250ms var(--cubic);
-
- 
-  }
-
-  .btn-close-modal svg {
-      width: 14px;
-      height: 14px;
-      transition: scale 250ms var(--cubic);
-  }
-
-  .btn-close-modal:hover,
-    .btn-close-modal:focus{
-      background-color: #ff6b01;
-  }
-
-    .btn-close-modal:hover  svg,
-    .btn-close-modal:focus svg{
-     stroke:#fff;
-     
-     transform: scale(1.3);
-     
-    }
-
+}
 
 .film {
   @include tablet {
@@ -257,7 +227,7 @@ item-right--popularity {
   margin-left: 8px;
 }
 
-.btn-modal,.btn-play-trailer {
+.btn-modal {
   width: 110px;
   height: 44px;
   font-family: 'Roboto';
@@ -278,11 +248,6 @@ item-right--popularity {
   @include desctop {
     width: 136px;
   }
-}
-
-.btn-play-trailer{
-  width: 100%;
-  margin-top: 20px;
 }
 .btn-modal.is-active {
   color: #fff;
