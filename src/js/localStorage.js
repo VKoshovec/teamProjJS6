@@ -88,11 +88,21 @@ const getDataFromQueue = () => {
 
 export const getWatchedList = () => {
   const getData = getDataFromWatched();
+  if (getData.length === 0) {
+    refs.filmList.innerHTML =
+      '<p class="text-in-empty-container">Please return to the home page and choose a movie...</p>';
+    return;
+  }
   renderFilms(getData);
 };
 
 export const getQueueList = () => {
   const getData = getDataFromQueue();
+  if (getData.length === 0) {
+    refs.filmList.innerHTML =
+      '<p class="text-in-empty-container">Please return to the home page and choose a movie...</p>';
+    return;
+  }
   renderFilms(getData);
 };
 
