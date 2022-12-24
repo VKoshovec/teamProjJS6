@@ -26,4 +26,4 @@ import * as part2 from './js/scrollUp';
 
 // renderFilms(1);
 
-// trendMovies(1);
+trendMovies(1);
