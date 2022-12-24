@@ -1,5 +1,5 @@
-import * as part1 from './js/part';
-import * as part2 from './js/part2';
+// import * as part1 from './js/part';
+// import * as part2 from './js/part2';
 import { movieLink } from './js/linkapi';
 import './js/modal/modal-main';
 import './js/modal/modal-team';

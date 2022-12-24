@@ -44,8 +44,9 @@ export function getItemTemplate({
                   ${cardImg1x}  2x"
                    media="(max-width: 480px)"
                 />
-                <img src="${cardImg1x}" 
-                alt="film" />
+                <img src="${cardImg1x}"
+                loading="lazy" 
+                alt="${title}" />
             </picture>
         </div>
         <div class="film-data">

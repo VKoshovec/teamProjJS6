@@ -45,7 +45,7 @@ export async function renderFilms(responce, genres) {
    films = responce.map (element => getItemTemplate(element, genres));
    refs.filmList.insertAdjacentHTML('beforeend', films.join(''));
   
-   console.log(responce);
+  //  console.log(responce);
 
 }
 
