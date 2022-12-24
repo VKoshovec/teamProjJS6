@@ -6,7 +6,6 @@ import './js/modal/video';
 import './js/modal/modal-team';
 import { firebaseOptions } from './js/firebase-options';
 import { renderFilms } from './js/renderFilms';
-import { localeStorage } from './js/localeStorage';
 import { trendMovies } from './js/requests';
 
 import { header } from './js/header';

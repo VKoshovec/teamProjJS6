@@ -3,9 +3,13 @@ const basicLightbox = require('basiclightbox');
 
 import { movieLink } from '../linkapi';
 import { getMovieById } from '../modal/getMovieById';
+<<<<<<< HEAD
 import { addFilmInWatchedList, addFilmInQueue } from '../localeStorage';
 import { getFetchVideo } from './video';
 import { getVideoTemplates } from './video';
+=======
+import { addFilmInWatchedList, addFilmInQueue } from '../localStorage';
+>>>>>>> main
 
 const refsO = {
   listFilm: document.querySelector('.film-list'),
@@ -30,7 +34,7 @@ function onClickItem(e) {
   }
   const parent = e.target.closest('li');
   let { id } = parent;
-  console.log('li', id);
+  // console.log('li', id);
 
   movieLink
     .getMoviesById(id)
@@ -38,9 +42,13 @@ function onClickItem(e) {
       const { genres } = data;
       // const genre = map.genres(genre => genre);
 
-      console.log(genres);
+      // console.log(genres);
       const render = getMovieById(data, genres);
+<<<<<<< HEAD
 
+=======
+      // console.log(render);
+>>>>>>> main
       return render;
     })
     .then(render => {
