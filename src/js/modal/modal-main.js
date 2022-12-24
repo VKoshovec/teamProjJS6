@@ -17,8 +17,6 @@ const refsO = {
   teaserBtnPlay: null,
 };
 
-// console.log(refsO.modalClose);
-
 refsO.listFilm.addEventListener('click', onClickItem);
 // refsO.modalClose.addEventListener('click', closeMainModal);
 refsO.backdrop.addEventListener('click', onBackdropClick);
@@ -60,32 +58,32 @@ function onClickItem(e) {
 
   getFetchVideo(id)
     .then(({ results }) => {
-      console.log(results);
+      // console.log(results);
       const teaser = results.map(video => video);
       const treiler = teaser[teaser.length - 1];
-      terailerKey = treiler.key;
+      let terailerKey = treiler.key;
       // const list = getVideoTemplates(terailerKey);
       // console.log(list);
       // return list;
       return terailerKey;
     })
     .then(terailerKey => {
-      console.log(terailerKey);
+      // console.log(terailerKey);
 
       const instance = basicLightbox.create(`
-    <iframe class="video" width="800" height="600" src="https://www.youtube.com/embed/${terailerKey}"
-  title="YouTube video player" frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen></iframe>
+          <iframe class="video" width="800" height="600" src="https://www.youtube.com/embed/${terailerKey}"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
    
   `);
       refsO.teaserBtnPlay.addEventListener('click', () => {
         //   refsO.movieCard.insertAdjacentHTML('beforeend', list);
-        console.log('play video');
 
         instance.show();
       });
-    });
+    })
+    .catch(err => console.log(err));
 
   showMainModal();
 }

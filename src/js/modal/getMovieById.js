@@ -35,7 +35,7 @@ export function getMovieById(
           width="375"
           height="478"
         />
-        <button class="btn-play-trailer" id="teaser" type="button">Дивитись трейлер</button>
+        <button class="btn-play-trailer" id="teaser" type="button">watch the trailer</button>
       </div>
       <div class="film__content">
         <h2 class="film__title">${title}</h2>
