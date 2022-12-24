@@ -1,5 +1,5 @@
 import { movieLink } from './linkapi';
-import imageURL from '../images/placeholder.png'
+import imageURL from '../images/placeholder.jpg'
 
 export function getItemTemplate({
     title,
