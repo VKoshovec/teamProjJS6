@@ -1,4 +1,5 @@
 import { movieLink } from './linkapi';
+import imageURL from '../images/placeholder.png'
 
 export function getItemTemplate({
     title,
@@ -9,12 +10,15 @@ export function getItemTemplate({
     
   }, genres) {
 
-    const year = release_date.substr (0, 4);
+    const GenresList = genres.reduce ((acc, element) => {
+      if (genre_ids.includes(element.id)){ acc.push(element.name) }     
+      return acc;
+   }, []); 
 
-    const filmGenres = genres.reduce ((acc, element) => {
-       if (genre_ids.includes(element.id)){ acc.push(element.name) }     
-       return acc;
-    }, []); 
+    const year = (release_date) ? release_date.substr (0, 4) : "No release date";
+    const cardImg1x = (poster_path) ? movieLink.getImageUrl(poster_path, 500) : imageURL;
+    const filmGenres = (GenresList.length) ? GenresList : ['No genre'];
+      
 
     return `<li class="film-list__item" id= ${id}>
     <a href="" class="film-list__link link">
@@ -22,23 +26,23 @@ export function getItemTemplate({
             <picture>
                 <source
                 srcset="
-                   ${movieLink.getImageUrl(poster_path, 500)}  1x,
-                   ${movieLink.getImageUrl(poster_path, 500)}  2x "
+                   ${cardImg1x}  1x,
+                   ${cardImg1x}  2x "
                 media="(min-width: 1280px)"
                 />
                 <source
                 srcset="
-                  ${movieLink.getImageUrl(poster_path, 500)}  1x,
-                  ${movieLink.getImageUrl(poster_path, 500)}  2x"
+                  ${cardImg1x}  1x,
+                  ${cardImg1x}  2x"
                    media="(min-width: 768px)"
                 />
                 <source
                 srcset="
-                  ${movieLink.getImageUrl(poster_path, 500)}  1x,
-                  ${movieLink.getImageUrl(poster_path, 500)}  2x"
+                  ${cardImg1x}  1x,
+                  ${cardImg1x}  2x"
                    media="(max-width: 480px)"
                 />
-                <img src="./images/film-1-mob-1x.jpg" 
+                <img src="${cardImg1x}" 
                 alt="film" />
             </picture>
         </div>
