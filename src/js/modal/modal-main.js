@@ -1,6 +1,6 @@
 import { movieLink } from '../linkapi';
 import { getMovieById } from '../modal/getMovieById';
-import { addFilmInWatchedList, addFilmInQueue } from '../localeStorage';
+import { addFilmInWatchedList, addFilmInQueue } from '../localStorage';
 
 const refsO = {
   listFilm: document.querySelector('.film-list'),
@@ -24,7 +24,7 @@ function onClickItem(e) {
   }
   const parent = e.target.closest('li');
   let { id } = parent;
-  console.log('li', id);
+  // console.log('li', id);
 
   movieLink
     .getMoviesById(id)
@@ -32,9 +32,9 @@ function onClickItem(e) {
       const { genres } = data;
       // const genre = map.genres(genre => genre);
 
-      console.log(genres);
+      // console.log(genres);
       const render = getMovieById(data, genres);
-      console.log(render);
+      // console.log(render);
       return render;
     })
     .then(render => {

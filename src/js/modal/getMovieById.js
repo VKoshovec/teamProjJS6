@@ -17,7 +17,7 @@ export function getMovieById(
   genres
 ) {
   let genresList = genres.map(element => element.name);
-  console.log(genresList.join(', '));
+  // console.log(genresList.join(', '));
 
   return `
 
