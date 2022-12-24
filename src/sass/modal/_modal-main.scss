@@ -278,12 +278,20 @@ item-right--popularity {
   @include desctop {
     width: 136px;
   }
+
+  &:hover {
+    color: #fff;
+    background: #ff6b01;
+    border: transparent;
+  }
+
 }
 
 .btn-play-trailer{
   width: 100%;
   margin-top: 10px;
 }
+
 .btn-modal.is-active {
   color: #fff;
   background: #ff6b01;

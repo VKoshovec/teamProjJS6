@@ -87,21 +87,30 @@ const getDataFromQueue = () => {
 };
 
 export const getWatchedList = () => {
-  renderFilms(getDataFromWatched());
+  const getData = getDataFromWatched();
+  renderFilms(getData);
 };
 
 export const getQueueList = () => {
-  renderFilms(getDataFromQueue());
+  const getData = getDataFromQueue();
+  renderFilms(getData);
+};
+
+const getAllData = () => {
+  formDataWatched = getDataFromWatched();
+  formDataQueue = getDataFromQueue();
 };
 
 export const addFilmInWatchedList = (btn, id) => {
   btn.addEventListener('click', () => {
-    formDataWatched = getDataFromWatched();
+    getAllData();
 
-    if (formDataWatched.includes(id)) {
+    if (formDataWatched.includes(id) || formDataQueue.includes(id)) {
       Notiflix.Notify.info('The movie has already been added to the list!');
       return;
     }
+
+    Notiflix.Notify.success('Added to list of watched!');
     formDataWatched.push(id);
     localStorage.setItem(KEY_STORAGE_WATCHED, JSON.stringify(formDataWatched));
   });
@@ -109,13 +118,14 @@ export const addFilmInWatchedList = (btn, id) => {
 
 export const addFilmInQueue = (btn, id) => {
   btn.addEventListener('click', () => {
-    formDataQueue = getDataFromQueue();
+    getAllData();
 
-    if (formDataQueue.includes(id)) {
+    if (formDataQueue.includes(id) || formDataWatched.includes(id)) {
       Notiflix.Notify.info('The movie has already been added to the list!');
       return;
     }
 
+    Notiflix.Notify.success('Added to the queue!');
     formDataQueue.push(id);
     localStorage.setItem(KEY_STORAGE_QUEUE, JSON.stringify(formDataQueue));
   });
