@@ -1,15 +1,11 @@
-import * as basicLightbox from 'basiclightbox';
-const basicLightbox = require('basiclightbox');
-
 import { movieLink } from '../linkapi';
-import { getMovieById } from '../modal/getMovieById';
-<<<<<<< HEAD
-import { addFilmInWatchedList, addFilmInQueue } from '../localeStorage';
+import { getMovieById } from './getMovieById';
+import { addFilmInWatchedList, addFilmInQueue } from '../localStorage';
 import { getFetchVideo } from './video';
 import { getVideoTemplates } from './video';
-=======
-import { addFilmInWatchedList, addFilmInQueue } from '../localStorage';
->>>>>>> main
+
+import * as basicLightbox from 'basiclightbox';
+const basicLightbox = require('basiclightbox');
 
 const refsO = {
   listFilm: document.querySelector('.film-list'),
@@ -44,11 +40,6 @@ function onClickItem(e) {
 
       // console.log(genres);
       const render = getMovieById(data, genres);
-<<<<<<< HEAD
-
-=======
-      // console.log(render);
->>>>>>> main
       return render;
     })
     .then(render => {
