@@ -1,6 +1,6 @@
 import { movieLink } from '../linkapi';
 import { getMovieById } from './getMovieById';
-import { addFilmInWatchedList, addFilmInQueue } from '../localStorage';
+import { addfilmInList } from '../localStorage';
 import { getFetchVideo } from './video';
 import { getVideoTemplates } from './video';
 
@@ -47,10 +47,8 @@ function onClickItem(e) {
       modalClose.addEventListener('click', closeMainModal);
 
       const btnWatched = document.querySelector('.film-btn__watched');
-      addFilmInWatchedList(btnWatched, id);
-
       const btnQueue = document.querySelector('.film-btn__queue');
-      addFilmInQueue(btnQueue, id);
+      addfilmInList(btnWatched, btnQueue, id);
 
       refsO.teaserBtnPlay = document.querySelector('#teaser');
     })
@@ -60,15 +58,13 @@ function onClickItem(e) {
     .then(({ results }) => {
       // console.log(results);
       const teaser = results.map(video => video);
-      
-      
+
       //fix no teaser
-      if (results.length == 0){
+      if (results.length == 0) {
         refsO.teaserBtnPlay.style.display = 'none';
         return;
-      } ; 
+      }
       //fix no teaser
-
 
       const treiler = teaser[teaser.length - 1];
 

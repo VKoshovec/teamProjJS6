@@ -1,143 +1,64 @@
 import { refs } from './refs';
-import { movieLink } from './linkapi';
-// import { getItemTemplate } from './getItemTemplate';
-import imageURL from '../images/placeholder.png';
+import { renderFilmsOnMyLibrary } from './renderFilmsOnMyLibrary';
 import Notiflix from 'notiflix';
 
 const KEY_STORAGE_WATCHED = 'watched-films';
 const KEY_STORAGE_QUEUE = 'films-in-the-queue';
 
+const textInEmptyContainer =
+  '<p class="text-in-empty-container">Please return to the home page and choose a movie...</p>';
+
 let formDataQueue = [];
 let formDataWatched = [];
 
-const getItemTempl = ({ title, poster_path, release_date, genres, id }) => {
-  const genresList = genres.map(genre => genre.name).join(', ');
-  const year = release_date ? release_date.substr(0, 4) : 'No release date';
-
-  const cardImg1x = poster_path
-    ? movieLink.getImageUrl(poster_path, 500)
-    : imageURL;
-
-  return `<li class="film-list__item" id= ${id}>
-    <a href="" class="film-list__link link">
-        <div class="film-list__top-wrap">
-            <picture>
-                <source
-                srcset="
-                   ${cardImg1x}  1x,
-                   ${cardImg1x}  2x "
-                media="(min-width: 1280px)"
-                />
-                <source
-                srcset="
-                  ${cardImg1x}  1x,
-                  ${cardImg1x}  2x"
-                   media="(min-width: 768px)"
-                />
-                <source
-                srcset="
-                  ${cardImg1x}  1x,
-                  ${cardImg1x}  2x"
-                   media="(max-width: 480px)"
-                />
-                <img src="./images/film-1-mob-1x.jpg" 
-                alt="film" />
-            </picture>
-        </div>
-        <div class="film-data">
-          <h2 class="film-data__title">${title}</h2>
-          <div class="film-data__info">
-            <p class="film-data__genres">${genresList}</p>
-            <p class="film-data__year">| ${year}</p>
-          </div>
-        </div>
-      </a>
-    </li>`;
-};
-
-const renderFilms = parseData => {
-  refs.filmList.innerHTML = '';
-
-  parseData.map(id => {
-    movieLink
-      .getMoviesById(id)
-      .then(({ title, poster_path, release_date, genres, id }) => {
-        const item = getItemTempl({
-          title,
-          poster_path,
-          release_date,
-          genres,
-          id,
-        });
-        refs.filmList.insertAdjacentHTML('beforeend', item);
-      });
-  });
-};
-
-const getDataFromWatched = () => {
-  const savedData = localStorage.getItem(KEY_STORAGE_WATCHED);
-  const parseData = JSON.parse(savedData);
-  return parseData || [];
-};
-
-const getDataFromQueue = () => {
-  const savedData = localStorage.getItem(KEY_STORAGE_QUEUE);
+const getDataFromStorage = key => {
+  const savedData = localStorage.getItem(key);
   const parseData = JSON.parse(savedData);
   return parseData || [];
 };
 
 export const getWatchedList = () => {
-  const getData = getDataFromWatched();
+  const getData = getDataFromStorage(KEY_STORAGE_WATCHED);
   if (getData.length === 0) {
-    refs.filmList.innerHTML =
-      '<p class="text-in-empty-container">Please return to the home page and choose a movie...</p>';
+    refs.filmList.innerHTML = textInEmptyContainer;
     return;
   }
-  renderFilms(getData);
+  renderFilmsOnMyLibrary(getData);
 };
 
 export const getQueueList = () => {
-  const getData = getDataFromQueue();
+  const getData = getDataFromStorage(KEY_STORAGE_QUEUE);
   if (getData.length === 0) {
-    refs.filmList.innerHTML =
-      '<p class="text-in-empty-container">Please return to the home page and choose a movie...</p>';
+    refs.filmList.innerHTML = textInEmptyContainer;
     return;
   }
-  renderFilms(getData);
+  renderFilmsOnMyLibrary(getData);
 };
 
 const getAllData = () => {
-  formDataWatched = getDataFromWatched();
-  formDataQueue = getDataFromQueue();
+  formDataWatched = getDataFromStorage(KEY_STORAGE_WATCHED);
+  formDataQueue = getDataFromStorage(KEY_STORAGE_QUEUE);
 };
 
-export const addFilmInWatchedList = (btn, id) => {
-  btn.addEventListener('click', () => {
-    getAllData();
+const addFilmInSutableList = (formData, id, key) => {
+  if (formDataWatched.includes(id) || formDataQueue.includes(id)) {
+    Notiflix.Notify.info('The movie has already been added to the list!');
+    return;
+  }
 
-    if (formDataWatched.includes(id) || formDataQueue.includes(id)) {
-      Notiflix.Notify.info('The movie has already been added to the list!');
-      return;
-    }
+  Notiflix.Notify.success('Added to list of watched!');
+  formData.push(id);
+  localStorage.setItem(key, JSON.stringify(formData));
+};
 
-    Notiflix.Notify.success('Added to list of watched!');
-    formDataWatched.push(id);
-    localStorage.setItem(KEY_STORAGE_WATCHED, JSON.stringify(formDataWatched));
+export const addfilmInList = (btnWatched, btnQueue, id) => {
+  getAllData();
+  btnWatched.addEventListener('click', () => {
+    addFilmInSutableList(formDataWatched, id, KEY_STORAGE_WATCHED);
   });
-};
 
-export const addFilmInQueue = (btn, id) => {
-  btn.addEventListener('click', () => {
-    getAllData();
-
-    if (formDataQueue.includes(id) || formDataWatched.includes(id)) {
-      Notiflix.Notify.info('The movie has already been added to the list!');
-      return;
-    }
-
-    Notiflix.Notify.success('Added to the queue!');
-    formDataQueue.push(id);
-    localStorage.setItem(KEY_STORAGE_QUEUE, JSON.stringify(formDataQueue));
+  btnQueue.addEventListener('click', () => {
+    addFilmInSutableList(formDataQueue, id, KEY_STORAGE_QUEUE);
   });
 };
 
