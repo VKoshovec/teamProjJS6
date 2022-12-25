@@ -15,5 +15,10 @@ export const refs = {
   queueBtn: document.querySelector('.queue__btn'),
 
   libraryBtn: document.querySelector('.nav_library'),
-  filmList: document.querySelector('.film-list'),  
+  filmList: document.querySelector('.film-list'),
+  body: document.querySelector('.body'),
+  openModalBtn: document.querySelector('.footer-modal'),
+  closeModalBtn: document.querySelector('[data-teammodal-close]'),
+  modal: document.querySelector('[data-modal-team]'),
+  bckdrp: document.querySelector('.backdrop-team'),
 };
