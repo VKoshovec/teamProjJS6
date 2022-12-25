@@ -35,9 +35,6 @@ function onClickItem(e) {
     .getMoviesById(id)
     .then(data => {
       const { genres } = data;
-      // const genre = map.genres(genre => genre);
-
-      // console.log(genres);
       const render = getMovieById(data, genres);
       return render;
     })
@@ -57,7 +54,7 @@ function onClickItem(e) {
 
   getFetchVideo(id)
     .then(({ results }) => {
-      // console.log(results);
+   
       const teaser = results.map(video => video);
 
       //fix no teaser
@@ -69,27 +66,20 @@ function onClickItem(e) {
 
       const treiler = teaser[teaser.length - 1];
 
-      // console.log(res_ult)
-
       let terailerKey = treiler.key;
-      // const list = getVideoTemplates(terailerKey);
-      // console.log(list);
-      // return list;
+
       return terailerKey;
     })
     .then(terailerKey => {
-      // console.log(terailerKey);
 
-      const instance = basicLightbox.create(`
-          <iframe class="video" width="800" height="600" src="https://www.youtube.com/embed/${terailerKey}"
-          title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>
-   
-  `);
+    const trailerRend = `
+    <iframe class="video" width="800" height="600" src="https://www.youtube.com/embed/${terailerKey}"
+    title="YouTube video player" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe>`;
+
+    const instance = basicLightbox.create(trailerRend);
       refsO.teaserBtnPlay.addEventListener('click', () => {
-        //   refsO.movieCard.insertAdjacentHTML('beforeend', list);
-
         instance.show();
       });
     })
