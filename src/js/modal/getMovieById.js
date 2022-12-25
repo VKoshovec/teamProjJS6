@@ -19,12 +19,12 @@ export function getMovieById(
 ) {
 
   let genresList = genres.map(element => element.name);
-  // console.log(genresList.join(', '));
+ 
   const cardImgModal = (poster_path) ? movieLink.getImageUrl(poster_path, 500) : imageURL;
 
   return `
 
-      <div class="card-film film " id="${id}">
+    <div class="card-film film " id="${id}">
       <button class="btn-close-modal js-btn-close-modal" type="button">
         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M8 8L22 22"  />
@@ -35,8 +35,8 @@ export function getMovieById(
         <img
           src="${cardImgModal} "
           alt="poster"
-          width="375"
-          height="478"
+          max-width="375px"
+          max-height="478px"
         />
         <button class="btn-play-trailer" id="teaser" type="button">watch the trailer</button>
       </div>
@@ -77,9 +77,6 @@ export function getMovieById(
           <button class="btn-modal film-btn__queue">add to queue</button>
         </div>
       </div>
-      
     </div>                
-       
-
   `;
 }
