@@ -103,14 +103,6 @@ export function navigation(event) {
         trendMovies(numPage);
         break;
 
-      case 'watched':
-        // watched(numPage);
-        break;
-
-      case 'queue':
-        // queue(numPage);
-        break;
-
       default:
         searchMoies(qwery, numPage);
     }
