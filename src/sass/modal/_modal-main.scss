@@ -54,9 +54,9 @@
   }
 
   @include desctop {
-    padding: 40px 12px;
+    padding: 40px 12px 30px 12px;
     max-height: 80%;
-    max-width: 806px;
+    width: 806px;
     // height: 100%;
     // display: flex;
   }
