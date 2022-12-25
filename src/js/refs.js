@@ -16,7 +16,6 @@ export const refs = {
 
   libraryBtn: document.querySelector('.nav_library'),
   filmList: document.querySelector('.film-list'),
-
   body: document.querySelector('.body'),
   openModalBtn: document.querySelector('.footer-modal'),
   closeModalBtn: document.querySelector('[data-teammodal-close]'),

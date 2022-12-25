@@ -30,32 +30,59 @@
 }
 
 .main-modal {
-  padding: 48px 20px 40px;
-  width: 280px;
-  min-height: 940px;
-  background-color: #fff;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   transition: transform 300ms var(--cubic);
-  overflow-y: auto;
-  // @media screen and (min-width: 320px) and (max-width: 767px) {
-  //   overflow-y:auto;
-  // }
-
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 48px 20px 40px 20px;
+  background-color: #fff;
+    
   @include tablet {
     padding: 40px 72px 40px 36px;
     width: 704px;
-    min-height: 552px;
+    // height: 552px;
+    height: 100%;
   }
 
   @include desctop {
     padding: 40px 12px;
     width: 806px;
-    min-height: 558px;
+    // height: 558px;
+    height: 100%;
   }
 }
+
+// .main-modal {
+//   padding: 48px 20px 40px;
+//   width: 280px;
+//   min-height: 940px;
+//   background-color: #fff;
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   transition: transform 300ms var(--cubic);
+//   overflow-y: auto;
+//   // @media screen and (min-width: 320px) and (max-width: 767px) {
+//   //   overflow-y:auto;
+//   // }
+
+//   @include tablet {
+//     padding: 40px 72px 40px 36px;
+//     width: 704px;
+//     min-height: 552px;
+//   }
+
+//   @include desctop {
+//     padding: 40px 12px;
+//     width: 806px;
+//     min-height: 558px;
+//   }
+// }
 
 .btn-close-modal {
   position: absolute;
@@ -122,7 +149,7 @@
 }
 
 .film__content {
-  width: 240px;
+  min-width: 240px;
 
   @include tablet {
     min-width: 264px;
