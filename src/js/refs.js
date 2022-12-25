@@ -15,5 +15,5 @@ export const refs = {
   queueBtn: document.querySelector('.queue__btn'),
 
   libraryBtn: document.querySelector('.nav_library'),
-  filmList: document.querySelector('.film-list'),
+  filmList: document.querySelector('.film-list'),  
 };

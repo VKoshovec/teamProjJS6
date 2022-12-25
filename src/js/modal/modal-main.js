@@ -8,6 +8,7 @@ import * as basicLightbox from 'basiclightbox';
 const basicLightbox = require('basiclightbox');
 
 const refsO = {
+  body: document.querySelector('body'),
   listFilm: document.querySelector('.film-list'),
   filmCardItem: document.querySelector('.film-list__item'),
   backdrop: document.querySelector('.js-backdrop'),
@@ -104,11 +105,14 @@ function onClickItem(e) {
 function showMainModal() {
   window.addEventListener('keydown', onEscKeyClick);
   refsO.backdrop.classList.remove('is-hidden');
+  refsO.body.classList.toggle('no-scroll');
+  refsO.body.classList.add('no-scroll');
 }
 
 function closeMainModal() {
   window.removeEventListener('keydown', onEscKeyClick);
   refsO.backdrop.classList.add('is-hidden');
+  refsO.body.classList.remove('no-scroll');
 }
 
 function onBackdropClick(e) {
