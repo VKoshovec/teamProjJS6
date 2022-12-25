@@ -4,17 +4,77 @@ import { renderFilms } from './renderFilms';
 import { refs } from './refs';
 import Notiflix from 'notiflix';
 
+let movies = [];
+let genres = [];
+
 export async function trendMovies(pageNum) {
-  const movies = await movieLink.getMovies(pageNum);
-  const genres = await movieLink.getGenresList();
+  await movieLink
+    .getMovies(pageNum)
+    .then(response => (movies = response))
+    .catch(error =>
+      Notiflix.Notify.failure(
+        `Some broblems with api or query! Err: ${error}`,
+        {
+          cssAnimationStyle: 'from-top',
+          position: 'center-center',
+          borderRadius: '25px',
+          clickToClose: true,
+        }
+      )
+    );
+  if (movies.length === 0) return;
+  await movieLink
+    .getGenresList()
+    .then(response => (genres = response))
+    .catch(error =>
+      Notiflix.Notify.failure(
+        `Some broblems with api or query! Err: ${error}`,
+        {
+          cssAnimationStyle: 'from-top',
+          position: 'center-center',
+          borderRadius: '25px',
+          clickToClose: true,
+        }
+      )
+    );
+  if (genres.length === 0) return;
   renderFilms(movies.results, genres);
-  window.scrollTo(0, 0);
+  if (pageNum < 4) window.scrollTo(0, 0);
+  else window.scrollTo(0, 216);
   pagination(movies.page, movies.total_pages, 'trending');
 }
 
 export async function searchMoies(searchWord, pageNum) {
-  const movies = await movieLink.getMoviesByWord(searchWord, pageNum);
-  const genres = await movieLink.getGenresList();
+  await movieLink
+    .getMoviesByWord(searchWord, pageNum)
+    .then(response => (movies = response))
+    .catch(error =>
+      Notiflix.Notify.failure(
+        `Some broblems with api or query! Err: ${error}`,
+        {
+          cssAnimationStyle: 'from-top',
+          position: 'center-center',
+          borderRadius: '25px',
+          clickToClose: true,
+        }
+      )
+    );
+  if (movies.length === 0) return;
+  await movieLink
+    .getGenresList()
+    .then(response => (genres = response))
+    .catch(error =>
+      Notiflix.Notify.failure(
+        `Some broblems with api or query! Err: ${error}`,
+        {
+          cssAnimationStyle: 'from-top',
+          position: 'center-center',
+          borderRadius: '25px',
+          clickToClose: true,
+        }
+      )
+    );
+  if (genres.length === 0) return;
   if (movies.total_results === 0)
     return Notiflix.Notify.failure(
       `Sorry, there are no movies matching your search query. Please try again.`,
@@ -22,6 +82,7 @@ export async function searchMoies(searchWord, pageNum) {
         cssAnimationStyle: 'from-top',
         position: 'center-center',
         borderRadius: '25px',
+        clickToClose: true,
       }
     );
   if (movies.page === 1)
@@ -31,10 +92,13 @@ export async function searchMoies(searchWord, pageNum) {
         cssAnimationStyle: 'from-top',
         position: 'center-center',
         borderRadius: '25px',
+        clickToClose: true,
       }
     );
+
   renderFilms(movies.results, genres);
-  window.scrollTo(0, 0);
+  if (pageNum < 4) window.scrollTo(0, 0);
+  else window.scrollTo(0, 216);
   pagination(movies.page, movies.total_pages, searchWord);
 }
 
@@ -56,6 +120,7 @@ function searchRequest() {
         cssAnimationStyle: 'from-top',
         position: 'center-center',
         borderRadius: '25px',
+        clickToClose: true,
       }
     );
     refs.searchInput.value = '';

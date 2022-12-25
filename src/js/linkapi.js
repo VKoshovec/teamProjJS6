@@ -39,20 +39,20 @@ export const movieLink = {
             page: pageNumber,
         };
 
-        loading;
+        // loading;
 
-        try {
+        // try {
 
            const request = await axios.get ( baseUrl, { params } );
 
-           stopLoading;
+        //    stopLoading;
         //    return await request.data.results;
               return await request.data;
 
-        } catch (error) {
-           stopLoading;
-           Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`) 
-        };
+        // } catch (error) {
+        //    stopLoading;
+        //    Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`) 
+        // };
     },
 
     //Objec method to get movies by name
@@ -66,19 +66,19 @@ export const movieLink = {
             include_adult: false,
         };
 
-        loading;
+        // loading;
 
-        try {
+        // try {
 
            const request = await axios.get ( searchByWodrUrl, { params } );
-           stopLoading;
+        //    stopLoading;
         //   return await request.data.results;
            return await request.data;
 
-        } catch (error) {
-            stopLoading;
-           Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`) 
-        };
+        // } catch (error) {
+            // stopLoading;
+        //    Notiflix.Notify.failure(`Some broblems with api or query! Err: ${error}`) 
+        // };
     },
 
     //Objec method to get movie about by id
