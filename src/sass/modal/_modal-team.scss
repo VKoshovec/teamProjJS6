@@ -72,8 +72,7 @@
 .team-modal {
   padding: 48px 20px 40px;
   width: 280px;
-  height: 700px;
-  height: px;
+  height: 90vh;
   background-color: #f7f7f7;
   position: absolute;
   top: 50%;
@@ -84,13 +83,15 @@
   transition: transform 300ms var(--cubic);
 
   @media screen and (min-width: 480px) and (max-width: 767px) {
-    height: 700px;
+    height: 90vh;
+    max-height: 700px;
     width: 460px;
   }
 
   @include tablet {
     width: 704px;
-    height: 552px;
+    max-height: 552px;
+    height: 90vh;
   }
 
   @include desctop {
