@@ -31,15 +31,17 @@ export function pagination(currentPage, totalPage, qweryWord) {
   }
 
   function makePage(pageNum, pageCur, pageTot) {
+    let mob = '';
     let current = '';
     let nav = pageNum;
     let pageClass = 'page';
 
+    if (Number(pageNum) === 1) current = '  show__button';
     if (Number(pageNum) === Number(pageCur)) current = ' current';
+    if (Number(pageNum) === Number(pageTot)) current = ' show__button';
     if (pageNum === '...') pageClass = 'points';
-
     return `<div class="${
-      pageClass + current
+      pageClass + current + mob
     }" data-nav="${nav}">${pageNum}</div>`;
   }
 

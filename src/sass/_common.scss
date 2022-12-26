@@ -7,20 +7,23 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  // border: 1px solid red;
   min-width: 320px;
   max-width: 480px;
+  padding: 0 20px;
 
   @media screen and (min-width: 481px) {
     max-width: 767px;
+    padding: 0 32px;
   }
 
   @media screen and (min-width: 768px) {
     max-width: 768px;
+    padding: 0 32px;
   }
 
   @media screen and (min-width: 1280px) {
     max-width: 1280px;
+    padding: 0 32px;
   }
 }
 
