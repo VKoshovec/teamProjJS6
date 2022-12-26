@@ -1,5 +1,5 @@
 import { movieLink } from '../linkapi';
-import imageURL from '../../images/placeholder.jpg'
+import imageURL from '../../images/placeholder.jpg';
 
 const posterUrl = 'https://image.tmdb.org/t/p/w';
 
@@ -17,10 +17,11 @@ export function getMovieById(
   },
   genres
 ) {
-
   let genresList = genres.map(element => element.name);
- 
-  const cardImgModal = (poster_path) ? movieLink.getImageUrl(poster_path, 500) : imageURL;
+
+  const cardImgModal = poster_path
+    ? movieLink.getImageUrl(poster_path, 500)
+    : imageURL;
 
   return `
 

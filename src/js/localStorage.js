@@ -2,8 +2,14 @@ import { refs } from './refs';
 import { renderFilmsOnMyLibrary } from './renderFilmsOnMyLibrary';
 import Notiflix from 'notiflix';
 
-const KEY_STORAGE_WATCHED = 'watched-films';
-const KEY_STORAGE_QUEUE = 'films-in-the-queue';
+export const KEY_STORAGE_WATCHED = 'watched-films';
+export const KEY_STORAGE_QUEUE = 'films-in-the-queue';
+
+const watchedAddTextBtn = 'ADD TO WATCH';
+const queueAddTextBtn = 'ADD TO QUEUE';
+
+const watchedRemoveTextBtn = 'REMOVE FROM WATCH';
+const queueRemoveTextBtn = 'REMOVE FROM QUEUE';
 
 const textInEmptyContainer =
   '<p class="text-in-empty-container">Please return to the home page and choose a movie...</p>';
@@ -11,10 +17,15 @@ const textInEmptyContainer =
 let formDataQueue = [];
 let formDataWatched = [];
 
-const getDataFromStorage = key => {
+export const getDataFromStorage = key => {
   const savedData = localStorage.getItem(key);
   const parseData = JSON.parse(savedData);
   return parseData || [];
+};
+
+const getAllData = () => {
+  formDataWatched = getDataFromStorage(KEY_STORAGE_WATCHED);
+  formDataQueue = getDataFromStorage(KEY_STORAGE_QUEUE);
 };
 
 export const getWatchedList = () => {
@@ -35,32 +46,90 @@ export const getQueueList = () => {
   renderFilmsOnMyLibrary(getData);
 };
 
-const getAllData = () => {
-  formDataWatched = getDataFromStorage(KEY_STORAGE_WATCHED);
-  formDataQueue = getDataFromStorage(KEY_STORAGE_QUEUE);
-};
-
 const addFilmInSutableList = (formData, id, key) => {
-  if (formDataWatched.includes(id) || formDataQueue.includes(id)) {
-    Notiflix.Notify.info('The movie has already been added to the list!');
-    return;
-  }
-
-  Notiflix.Notify.success('Added to list of watched!');
+  Notiflix.Notify.success('SUCCESS: added to list!');
   formData.push(id);
   localStorage.setItem(key, JSON.stringify(formData));
+};
+
+const removeFromStorageList = (
+  clickableButton,
+  unclickableButton,
+  formData,
+  key,
+  id,
+  text
+) => {
+  clickableButton.textContent = `${text}`;
+  clickableButton.classList.remove('active-btn');
+
+  unclickableButton.removeAttribute('disabled');
+  unclickableButton.style.cursor = 'pointer';
+
+  const index = formData.findIndex(savedId => savedId === id);
+  formData.splice(index, 1);
+
+  localStorage.removeItem(key);
+  localStorage.setItem(key, JSON.stringify(formData));
+  Notiflix.Notify.success(`SUCCESS: deleted from list!`);
+};
+
+const changesClickableBtn = (btn, text) => {
+  btn.textContent = `${text}`;
+  btn.classList.add('active-btn');
+};
+
+const changesUnclickableBtn = btn => {
+  btn.setAttribute('disabled', 'true');
+  btn.style.cursor = 'not-allowed';
 };
 
 export const addfilmInList = (btnWatched, btnQueue, id) => {
   getAllData();
   btnWatched.addEventListener('click', () => {
+    if (btnWatched.classList.contains('active-btn')) {
+      removeFromStorageList(
+        btnWatched,
+        btnQueue,
+        formDataWatched,
+        KEY_STORAGE_WATCHED,
+        id,
+        watchedAddTextBtn
+      );
+
+      if (refs.watchedBtn.classList.contains('active-liberty-btn')) {
+        renderFilmsOnMyLibrary(formDataWatched);
+      }
+
+      return;
+    }
+
     addFilmInSutableList(formDataWatched, id, KEY_STORAGE_WATCHED);
+    changesClickableBtn(btnWatched, watchedRemoveTextBtn);
+    changesUnclickableBtn(btnQueue);
   });
 
   btnQueue.addEventListener('click', () => {
+    if (btnQueue.classList.contains('active-btn')) {
+      removeFromStorageList(
+        btnQueue,
+        btnWatched,
+        formDataQueue,
+        KEY_STORAGE_QUEUE,
+        id,
+        queueAddTextBtn
+      );
+      if (refs.queueBtn.classList.contains('active-liberty-btn')) {
+        renderFilmsOnMyLibrary(formDataQueue);
+      }
+      return;
+    }
+
     addFilmInSutableList(formDataQueue, id, KEY_STORAGE_QUEUE);
+    changesClickableBtn(btnQueue, queueRemoveTextBtn);
+    changesUnclickableBtn(btnWatched);
   });
 };
 
-refs.queueBtn.addEventListener('click', getQueueList);
 refs.watchedBtn.addEventListener('click', getWatchedList);
+refs.queueBtn.addEventListener('click', getQueueList);
