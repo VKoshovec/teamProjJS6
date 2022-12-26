@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .loadMore {
   display: flex;
   align-items: center;
@@ -31,7 +35,7 @@
 
   &:hover,
   &:focus {
-    border: 1px solid #ff6b08;
+    border: 1px solid  #ff6b08;
     cursor: pointer;
   }
 
@@ -60,28 +64,15 @@
 }
 
 .back {
-  display: none;
+  display: flex;
   border: none;
   background: #f7f7f7;
   transform: matrix(-1, 0, 0, 1, 0, 0);
 }
 
 .next {
-  display: none;
+  display: flex;
   border: none;
   background: #f7f7f7;
   transform: matrix(-1, 0, 0, 1, 0, 0);
-}
-
-.block--margin {
-  padding-top: 0;
-}
-
-.show__button,
-.points {
-  display: none;
-
-  @media screen and (min-width: 480px) {
-    display: flex;
-  }
 }
