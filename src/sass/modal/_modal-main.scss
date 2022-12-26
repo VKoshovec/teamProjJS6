@@ -45,7 +45,7 @@
 
   margin-top: auto;
   margin-bottom: auto;
-    
+
   @include tablet {
     padding: 40px 72px 40px 36px;
     // width: 704px;
@@ -308,6 +308,17 @@ item-right--popularity {
   @include desctop {
     width: 136px;
   }
+
+  &:hover {
+    color: #000000;
+    background: #8c8c8c;
+  }
+}
+
+.active-btn {
+  color: #fff;
+  background: #ff6b01;
+  border: transparent;
 
   &:hover {
     color: #fff;

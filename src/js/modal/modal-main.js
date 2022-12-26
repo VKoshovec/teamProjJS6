@@ -1,6 +1,11 @@
 import { movieLink } from '../linkapi';
 import { getMovieById } from './getMovieById';
-import { addfilmInList } from '../localStorage';
+import {
+  addfilmInList,
+  getDataFromStorage,
+  KEY_STORAGE_WATCHED,
+  KEY_STORAGE_QUEUE,
+} from '../localStorage';
 import { getFetchVideo } from './video';
 import { getVideoTemplates } from './video';
 
@@ -48,13 +53,29 @@ function onClickItem(e) {
       const btnQueue = document.querySelector('.film-btn__queue');
       addfilmInList(btnWatched, btnQueue, id);
 
+      const dataStorageWatched = getDataFromStorage(KEY_STORAGE_WATCHED);
+      const dataStorageQueue = getDataFromStorage(KEY_STORAGE_QUEUE);
+
+      if (dataStorageWatched.includes(id)) {
+        btnWatched.textContent = 'remove from watched';
+        btnWatched.classList.add('active-btn');
+        btnQueue.setAttribute('disabled', 'true');
+        btnQueue.style.cursor = 'not-allowed';
+      }
+
+      if (dataStorageQueue.includes(id)) {
+        btnQueue.textContent = 'remove from queue';
+        btnQueue.classList.add('active-btn');
+        btnWatched.setAttribute('disabled', 'true');
+        btnWatched.style.cursor = 'not-allowed';
+      }
+
       refsO.teaserBtnPlay = document.querySelector('#teaser');
     })
     .catch(err => console.log(err));
 
   getFetchVideo(id)
     .then(({ results }) => {
-   
       const teaser = results.map(video => video);
 
       //fix no teaser
@@ -71,14 +92,13 @@ function onClickItem(e) {
       return terailerKey;
     })
     .then(terailerKey => {
-
-    const trailerRend = `
+      const trailerRend = `
     <iframe class="video" width="800" height="600" src="https://www.youtube.com/embed/${terailerKey}"
     title="YouTube video player" frameborder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     allowfullscreen></iframe>`;
 
-    const instance = basicLightbox.create(trailerRend);
+      const instance = basicLightbox.create(trailerRend);
       refsO.teaserBtnPlay.addEventListener('click', () => {
         instance.show();
       });
