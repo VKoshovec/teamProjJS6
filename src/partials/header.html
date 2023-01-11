@@ -2,22 +2,34 @@
   <div class="container">
     <div class="header_wrapper">
       <nav class="navigation">
-        <a class="logo link" href=" ">
-          <svg class="logo__icon" width="24" height="24">
-            <use href="/src/images/general-sprait.svg#icon-film"></use>
-          </svg>
-          <span class="logo_text">Filmoteka</span>
-        </a>
-        <ul class="nav_list">
-          <li class="nav_item">
-            <a href="" class="link nav_home active">Home</a>
-          </li>
-          <li class="nav_item">
-            <a href="" class="link nav_library">My Library</a>
-          </li>
-        </ul>
+        <div class="top_container">
+          <a class="logo link" href=" ">
+            <svg class="logo__icon" width="24" height="24">
+              <use href="/src/images/general-sprait.svg#icon-film"></use>
+            </svg>
+            <span class="logo_text">Filmoteka</span>
+          </a>
+          <ul class="nav_list">
+            <li class="nav_item">
+              <a href="" class="link nav_home active">Home</a>
+            </li>
+            <li class="nav_item">
+              <a href="" class="link nav_library">My Library</a>
+            </li>
+          </ul>
+        </div>
+        <div class="bottom_container">
+          <button type="button" class="button-switcher">
+            <svg class="moon-icon">
+              <use href="/src/images/general-sprait.svg#icon-moon"></use>
+            </svg>
+            <svg class="sun-icon hidden">
+              <use href="/src/images/general-sprait.svg#icon-sun"></use>
+            </svg>
+          </button>
+        </div>
       </nav>
-      <form class="search_form" id="search_form" action="#" >
+      <form class="search_form" id="search_form" action="#">
         <div class="input-wrapper">
           <input
             type="text"
@@ -26,10 +38,10 @@
             placeholder="Movie search"
             class="search-field"
           />
-           <button type="submit" class="search_btn">
-                    <svg class="search_icon" width="12" height="12">
-                        <use href="/src/images/general-sprait.svg#icon-search-2"></use>
-                    </svg>
+          <button type="submit" class="search_btn">
+            <svg class="search_icon" width="12" height="12">
+              <use href="/src/images/general-sprait.svg#icon-search-2"></use>
+            </svg>
           </button>
         </div>
       </form>

@@ -1,3 +1,5 @@
+import { doc } from 'firebase/firestore/lite';
+
 export const refs = {
   pageNavigation: document.querySelector('.loadMore'),
   pageBack: document.querySelector('.back'),
@@ -21,4 +23,13 @@ export const refs = {
   closeModalBtn: document.querySelector('[data-teammodal-close]'),
   modal: document.querySelector('[data-modal-team]'),
   bckdrp: document.querySelector('.backdrop-team'),
+
+  switcherBtn: document.querySelector('.button-switcher'),
+  moonIcon: document.querySelector('.moon-icon'),
+  sunIcon: document.querySelector('.sun-icon'),
+  footer: document.querySelector('.footer'),
+  footerText: document.querySelector('.footer-text-all'),
+  mainModal: document.querySelector('.main-modal'),
+  modalTeam: document.querySelector('.team-modal'),
+  dataTeam: document.querySelector('.team-content'),
 };

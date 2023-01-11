@@ -33,7 +33,7 @@
   top: 8;
   width: 30px;
   height: 30px;
-  background-color: #ffff;
+  background-color: transparent;
   color: #ff6b08;
   border: 1px solid #ff6b08;
   border-radius: 50%;
@@ -100,6 +100,10 @@
     min-height: 558px;
   }
 }
+
+.dark-modal-team {
+  background-color: #545454;
+}
 .team-title {
   display: flex;
   justify-content: center;
@@ -165,8 +169,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #545454;
+
   font-weight: 600;
+}
+
+.team-content {
+  color: #545454;
+}
+
+.dark-team-content {
+  color: #f7f7f7;
 }
 
 .go-it {

@@ -37,10 +37,10 @@
   transition: transform 300ms var(--cubic);
   max-width: 90%;
   max-height: 95%;
-  // height: 100%;
+
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 48px 20px 40px 20px;
+  padding: 48px 20px 30px 20px;
   background-color: #fff;
 
   margin-top: auto;
@@ -54,41 +54,18 @@
   }
 
   @include desctop {
-    padding: 40px 12px 30px 12px;
-    max-height: 80%;
+    padding: 30px 12px 30px 12px;
+    max-height: 85%;
     width: 806px;
+    overflow-y: hidden;
     // height: 100%;
     // display: flex;
   }
 }
 
-// .main-modal {
-//   padding: 48px 20px 40px;
-//   width: 280px;
-//   min-height: 940px;
-//   background-color: #fff;
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   transition: transform 300ms var(--cubic);
-//   overflow-y: auto;
-//   // @media screen and (min-width: 320px) and (max-width: 767px) {
-//   //   overflow-y:auto;
-//   // }
-
-//   @include tablet {
-//     padding: 40px 72px 40px 36px;
-//     width: 704px;
-//     min-height: 552px;
-//   }
-
-//   @include desctop {
-//     padding: 40px 12px;
-//     width: 806px;
-//     min-height: 558px;
-//   }
-// }
+.dark-modal {
+  background-color: #313131;
+}
 
 .btn-close-modal {
   position: absolute;
@@ -166,9 +143,6 @@
   }
 }
 
-// flex-grow: 1;
-// width: 300px;
-
 .film__title {
   margin-bottom: 20px;
   font-family: 'Roboto';
@@ -176,7 +150,7 @@
   font-weight: 500;
   font-size: 20px;
   line-height: calc(23 / 20);
-  color: #000000;
+  color: #646464;
 
   @include tablet {
   }
@@ -206,7 +180,6 @@
   flex-direction: column;
 
   gap: 8px;
-  // margin-bottom: 8px;
 }
 
 .item-left {
@@ -227,7 +200,7 @@
   font-size: 12px;
   line-height: calc(16 / 12);
 
-  color: #000000;
+  color: #646464;
 }
 
 .item-right--vote,
@@ -258,7 +231,7 @@ item-right--popularity {
 
   text-transform: uppercase;
 
-  color: #000000;
+  color: #8c8c8c;
 }
 
 .film__about-description {
@@ -270,7 +243,7 @@ item-right--popularity {
   line-height: calc(20 / 12);
   /* or 167% */
 
-  color: #000000;
+  color: #646464;
 
   @include tablet {
   }
@@ -296,10 +269,13 @@ item-right--popularity {
   font-size: 12px;
   line-height: calc(16 / 12);
   text-transform: uppercase;
+  border: 1px solid #8c8c8c;
   border-radius: 5px;
   outline: none;
   background-color: inherit;
-  color: #000000;
+  color: #8c8c8c;
+  transition: color 250ms var(--cubic), background 250ms var(--cubic),
+    border 250ms var(--cubic);
 
   @include tablet {
     width: 125px;
@@ -310,20 +286,26 @@ item-right--popularity {
   }
 
   &:hover {
+    color: #fff;
+    background: #ff6b01;
+    border: transparent;
+  }
+
+  &:disabled {
     color: #000000;
     background: #8c8c8c;
+    border: transparent;
   }
 }
 
 .active-btn {
   color: #fff;
   background: #ff6b01;
+  box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
   border: transparent;
 
   &:hover {
-    color: #fff;
-    background: #ff6b01;
-    border: transparent;
+    background: #ff6b48;
   }
 }
 

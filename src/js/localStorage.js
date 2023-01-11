@@ -1,6 +1,7 @@
 import { refs } from './refs';
 import { renderFilmsOnMyLibrary } from './renderFilmsOnMyLibrary';
 import Notiflix from 'notiflix';
+import throttle from 'lodash.throttle';
 
 export const KEY_STORAGE_WATCHED = 'watched-films';
 export const KEY_STORAGE_QUEUE = 'films-in-the-queue';
@@ -86,49 +87,61 @@ const changesUnclickableBtn = btn => {
 
 export const addfilmInList = (btnWatched, btnQueue, id) => {
   getAllData();
-  btnWatched.addEventListener('click', () => {
-    if (btnWatched.classList.contains('active-btn')) {
-      removeFromStorageList(
-        btnWatched,
-        btnQueue,
-        formDataWatched,
-        KEY_STORAGE_WATCHED,
-        id,
-        watchedAddTextBtn
-      );
+  btnWatched.addEventListener(
+    'click',
+    throttle(() => {
+      if (btnWatched.classList.contains('active-btn')) {
+        removeFromStorageList(
+          btnWatched,
+          btnQueue,
+          formDataWatched,
+          KEY_STORAGE_WATCHED,
+          id,
+          watchedAddTextBtn
+        );
 
+        if (refs.watchedBtn.classList.contains('active-liberty-btn')) {
+          renderFilmsOnMyLibrary(formDataWatched);
+        }
+
+        return;
+      }
+
+      addFilmInSutableList(formDataWatched, id, KEY_STORAGE_WATCHED);
       if (refs.watchedBtn.classList.contains('active-liberty-btn')) {
         renderFilmsOnMyLibrary(formDataWatched);
       }
+      changesClickableBtn(btnWatched, watchedRemoveTextBtn);
+      changesUnclickableBtn(btnQueue);
+    }, 250)
+  );
 
-      return;
-    }
+  btnQueue.addEventListener(
+    'click',
+    throttle(() => {
+      if (btnQueue.classList.contains('active-btn')) {
+        removeFromStorageList(
+          btnQueue,
+          btnWatched,
+          formDataQueue,
+          KEY_STORAGE_QUEUE,
+          id,
+          queueAddTextBtn
+        );
+        if (refs.queueBtn.classList.contains('active-liberty-btn')) {
+          renderFilmsOnMyLibrary(formDataQueue);
+        }
+        return;
+      }
 
-    addFilmInSutableList(formDataWatched, id, KEY_STORAGE_WATCHED);
-    changesClickableBtn(btnWatched, watchedRemoveTextBtn);
-    changesUnclickableBtn(btnQueue);
-  });
-
-  btnQueue.addEventListener('click', () => {
-    if (btnQueue.classList.contains('active-btn')) {
-      removeFromStorageList(
-        btnQueue,
-        btnWatched,
-        formDataQueue,
-        KEY_STORAGE_QUEUE,
-        id,
-        queueAddTextBtn
-      );
+      addFilmInSutableList(formDataQueue, id, KEY_STORAGE_QUEUE);
       if (refs.queueBtn.classList.contains('active-liberty-btn')) {
         renderFilmsOnMyLibrary(formDataQueue);
       }
-      return;
-    }
-
-    addFilmInSutableList(formDataQueue, id, KEY_STORAGE_QUEUE);
-    changesClickableBtn(btnQueue, queueRemoveTextBtn);
-    changesUnclickableBtn(btnWatched);
-  });
+      changesClickableBtn(btnQueue, queueRemoveTextBtn);
+      changesUnclickableBtn(btnWatched);
+    }, 250)
+  );
 };
 
 refs.watchedBtn.addEventListener('click', getWatchedList);

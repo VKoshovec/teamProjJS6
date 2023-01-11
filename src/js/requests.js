@@ -1,6 +1,7 @@
 import { movieLink } from './linkapi';
 import { pagination, navigation } from './pagination';
 import { renderFilms } from './renderFilms';
+import { getDataFromStorage } from './switcherOfTheme';
 import { refs } from './refs';
 import Notiflix from 'notiflix';
 
@@ -103,6 +104,7 @@ export async function searchMoies(searchWord, pageNum) {
 }
 
 trendMovies(1);
+getDataFromStorage();
 refs.pageNavigation.addEventListener('click', navigation, false);
 refs.searchInput.focus();
 refs.searchForm.addEventListener('submit', event => {
